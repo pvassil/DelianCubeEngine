@@ -73,6 +73,7 @@ public class MainApp extends AbstractApplication {
 			e.printStackTrace();
 		}
 		
+		Boolean serverStatus = false;
 		if(service == null) {
 			diagnostics = "Unable to lookup RMI server, exiting";
 			System.out.println(diagnostics);
@@ -81,6 +82,7 @@ public class MainApp extends AbstractApplication {
 		else {
 			diagnostics = "Successfully found RMI server";
 			System.out.println(diagnostics);
+			serverStatus = true;
 		}
 		
 		super.start(primaryStage);
@@ -90,7 +92,7 @@ public class MainApp extends AbstractApplication {
 		// Set the application icon.
 		//this.primaryStage.getIcons().add(new Image("file:resources/images/ZZZZ.png"));
 
-		MainAppController controller = new MainAppController();
+		MainAppController controller = new MainAppController(serverStatus, service);
 		int launchResult = -100;
 		
 		LauncherForViewControllerPairs launcher = new LauncherForViewControllerPairs();
@@ -115,13 +117,13 @@ public class MainApp extends AbstractApplication {
 		service.answerCubeQueriesFromFile(f);/**/
 				
 		// Cube LOAN and queries
-		try {
-			service.initializeConnection("pkdd99", "root",
-					"password", "pkdd99", "loan");
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		System.out.println("Completed connection initialization");
+//		try {
+//			service.initializeConnection("pkdd99", "root",
+//					"password", "pkdd99", "loan");
+//		} catch (RemoteException e) {
+//			e.printStackTrace();
+//		}
+//		System.out.println("Completed connection initialization");
 		
 
 		

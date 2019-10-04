@@ -19,31 +19,67 @@
 
 package client.gui.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import mainengine.IMainEngine;
 import client.gui.utils.ExitController;
 import client.gui.utils.LauncherForViewControllerPairs;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXProgressBar;
+import com.jfoenix.controls.JFXTextField;
 
 import client.ClientRMITransferer;
-import client.gui.application.AbstractApplication;
 import client.gui.utils.CustomAlertDialog;
+import client.gui.utils.ExitController;
+import client.gui.utils.LauncherForViewControllerPairs;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
+import mainengine.IMainEngine;
+import javafx.fxml.Initializable;
 
-public class MainAppController extends AbstractController {
+public class MainAppController extends AbstractController implements Initializable{
 	@FXML
 	private TextArea textLogger;
 	
-	public MainAppController() {
+	private Boolean serverStatus;
+	private IMainEngine service;
+	
+	public MainAppController(Boolean serverStatus, IMainEngine service) {
 		super();
+		this.serverStatus = serverStatus;
+		this.service = service;
 	}
 
 	
@@ -195,6 +231,119 @@ public class MainAppController extends AbstractController {
 
 		
 		return launchResult;
+	}
+	
+	// Code for the new GUI
+	
+	@FXML
+	private Label serverLabel;
+
+	@FXML
+	private Label dbLabel;
+	
+	@FXML
+	private JFXProgressBar progressBarGUI;
+	
+	@FXML
+	private JFXTextField schemaTextField;
+	
+	@FXML
+	private JFXTextField usernameTextField;
+	
+	@FXML
+	private JFXTextField passwordTextField;
+	
+	@FXML
+	private JFXTextField inputFolderTextField;
+	
+	@FXML
+	private JFXTextField cubeTextField;
+	
+	@FXML
+	private JFXButton connectButton;
+	
+    @FXML
+    private Pane leftPane;
+    
+    @FXML
+    private Pane rightPane;
+    
+    @FXML
+    private Label DCE;
+
+    @FXML
+    private GridPane buttonGrid;
+	
+	@FXML
+	public void connectDB(ActionEvent event) throws InterruptedException{
+		progressBarGUI.setVisible(true);
+		try {
+			service.initializeConnection(schemaTextField.getText(), usernameTextField.getText(),
+					passwordTextField.getText(), inputFolderTextField.getText(),
+					cubeTextField.getText());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Completed connection initialization");
+		PrintWriter writer;
+		try {
+			writer = new PrintWriter("latestDB.txt", "UTF-8");
+			writer.println(schemaTextField.getText() + "," + usernameTextField.getText() + "," +
+					passwordTextField.getText() + "," + inputFolderTextField.getText() + "," +
+					cubeTextField.getText());
+			writer.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dbLabel.setText("Connected to DB!");
+		dbLabel.setTextFill(Color.web("#3ed65f"));
+		for (Node object : rightPane.getChildren()) {
+			if (object.isVisible()) {
+				object.setVisible(false);
+				object.setDisable(true);
+			} else {
+				object.setVisible(true);
+				object.setDisable(false);
+			}
+		}
+		progressBarGUI.setVisible(false);
+		DCE.setVisible(true);
+		DCE.setDisable(false);
+		buttonGrid.setVisible(true);
+		buttonGrid.setDisable(false);
+	}
+	
+	// Initialize method 
+	
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+		if (this.serverStatus == true) {
+			serverLabel.setText("Connected to server!");
+			serverLabel.setTextFill(Color.web("#3ed65f"));
+		}
+		String[] ar = null;
+	    try {
+	    	BufferedReader in = new BufferedReader(
+	    			new FileReader("latestDB.txt"));
+	        String str;
+	        while ((str = in.readLine())!= null) {
+	            ar=str.split(",");
+	        }
+	        in.close();
+	    } catch (IOException e) {
+	        System.out.println("File Read Error");
+	    }
+	    if (ar != null) {
+	    	schemaTextField.setText(ar[0]);
+	    	usernameTextField.setText(ar[1]);
+	    	passwordTextField.setText(ar[2]);
+	    	inputFolderTextField.setText(ar[3]);
+	    	cubeTextField.setText(ar[4]);
+	    }
 	}
 	
 }//end class MAinAppController
