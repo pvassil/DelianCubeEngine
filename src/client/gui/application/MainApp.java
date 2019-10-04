@@ -116,8 +116,8 @@ public class MainApp extends AbstractApplication {
 				
 		// Cube LOAN and queries
 		try {
-			service.initializeConnection("pkdd99", "CinecubesUser",
-					"Cinecubes", "pkdd99", "loan");
+			service.initializeConnection("pkdd99", "root",
+					"password", "pkdd99", "loan");
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
