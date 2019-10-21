@@ -1,0 +1,6 @@
+CubeName:sales
+Name:CubeQuerySales
+AggrFunc:Avg
+Measure:sales
+Gamma:products_dim.lvl1,location_dim.lvl1
+Sigma:dates_dim.lvl3='2'

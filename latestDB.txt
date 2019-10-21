@@ -1,1 +1,1 @@
-pkdd99,root,password,pkdd99,loan
+products,root,kostas14,products,sales
