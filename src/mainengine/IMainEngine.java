@@ -43,7 +43,10 @@ public interface IMainEngine extends IServer {
 	 */
 	void initializeConnection(String schemaName, String login, String passwd,
 			 String inputFolder, String cubeName) throws RemoteException;
-
+	
+	// Added by Konstantinos Kadoglou
+	void initializeSpark(String schemaName, String inputFolder,
+			String cubeName) throws RemoteException;
 
 	/**
 	 * Answers a query as prescribed in a String

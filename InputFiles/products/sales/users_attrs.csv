@@ -1,0 +1,1 @@
+user_id,INT,username,VARCHAR,age,INT,location,VARCHAR,budget,DECIMAL,ALL,VARCHAR

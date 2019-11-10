@@ -20,6 +20,7 @@
 
 package cubemanager.starschema;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -28,6 +29,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.commons.io.FilenameUtils;
 
 import result.Cell;
 import result.Result;
@@ -66,8 +69,6 @@ public class Database {
 	private String Password;
 
 	public Database() {
-		setConnectionString("jdbc:mysql://localhost:3306/adult_no_dublic");
-		DBMS = "com.mysql.jdbc.Driver";
 		Tbl = new ArrayList<Table>();
 	}
 
@@ -118,6 +119,31 @@ public class Database {
 			ex.printStackTrace();
 			(new ErrorClass()).printErrorMessage(ex.getMessage());
 		}
+	}
+	
+	// Added by Konstantinos Kadoglou
+	// This method uses setAttribute(String) instead of setAttribute(Connection)
+	// TODO: Path must be dynamic
+	public void GenerateTableListSpark(String folderName, String cubeName) {
+		String path = "InputFiles/" + folderName + "/" + cubeName;
+		File folder = new File(path);
+		File[] listOfFiles = folder.listFiles();
+
+		for (int i = 0; i < listOfFiles.length; i++) {
+		  if (listOfFiles[i].isFile()) {
+		    System.out.println("\nReading file : " + FilenameUtils.removeExtension(listOfFiles[i].getName()));
+			String attrs = FilenameUtils.removeExtension(listOfFiles[i].getName());
+			String name =  attrs.substring(0, attrs.length() - 6);
+			System.out.println("Table : " + name);
+			Table tmp = new Table(name);
+			tmp.setAttribute(attrs, path);
+			System.out.println();
+			this.Tbl.add(tmp);
+		  } else if (listOfFiles[i].isDirectory()) {
+		    System.out.println("Directory " + listOfFiles[i].getName());
+		  }
+		}
+		System.out.println();
 	}
 
 	//Not apparently used?

@@ -20,12 +20,6 @@
 package client.gui.application;
 
 
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-//import javafx.application.Application;
-//import javafx.scene.image.Image;
-import mainengine.IMainEngine;
-
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -33,7 +27,11 @@ import java.rmi.registry.Registry;
 
 import client.gui.controllers.MainAppController;
 import client.gui.utils.LauncherForViewControllerPairs;
-
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.scene.image.Image;
+//import javafx.application.Application;
+//import javafx.scene.image.Image;
 import mainengine.IMainEngine;
 
 public class MainApp extends AbstractApplication {
@@ -77,7 +75,7 @@ public class MainApp extends AbstractApplication {
 		if(service == null) {
 			diagnostics = "Unable to lookup RMI server, exiting";
 			System.out.println(diagnostics);
-			System.exit(-100);
+//			System.exit(-100);
 		}
 		else {
 			diagnostics = "Successfully found RMI server";
@@ -87,11 +85,9 @@ public class MainApp extends AbstractApplication {
 		
 		super.start(primaryStage);
 		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle("Delian Cubes Client Application");
-
-		// Set the application icon.
-		//this.primaryStage.getIcons().add(new Image("file:resources/images/ZZZZ.png"));
-
+		this.primaryStage.setTitle("Delian Cubes Client Application - JDBC");
+		primaryStage.getIcons().add(new Image("res\\icon.png"));
+		
 		MainAppController controller = new MainAppController(serverStatus, service);
 		int launchResult = -100;
 		
@@ -109,27 +105,7 @@ public class MainApp extends AbstractApplication {
 		this.setFirstCalledController(controller);
 		this.setLastCalledController(controller);
 		
-		
-		// Cube ADULT and queries
-		/*service.initializeConnection("adult_no_dublic", "CinecubesUser",
-				"Cinecubes", "adult", "adult");
-		File f = new File("InputFiles/cubeQueries.ini");
-		service.answerCubeQueriesFromFile(f);/**/
-				
-		// Cube LOAN and queries
-//		try {
-//			service.initializeConnection("pkdd99", "root",
-//					"password", "pkdd99", "loan");
-//		} catch (RemoteException e) {
-//			e.printStackTrace();
-//		}
-//		System.out.println("Completed connection initialization");
-		
-
-		
-		//initRootLayout();
-
-	}//end start
+	}
 
 
 	public IMainEngine getServer() {

@@ -55,23 +55,28 @@ public class CubeBase {
 	 *  
 	 * @param lookupFolder	The FOLDER where the input info for the project lies. Must be in the InputFiles folder.
 	 */
-	public CubeBase(String lookupFolder) {
-
-		try {
-			String line;
-			Scanner scanner = new Scanner(new FileReader("InputFiles/" + lookupFolder
-					+ "/dbc.ini"));
-			while (scanner.hasNextLine()) {
-				line = scanner.nextLine();
-				String results[] = line.split(";");
-				DB = new Database(results[1], results[3]);
-				dimensions = new ArrayList<Dimension>();
-				BasicCubes = new ArrayList<BasicStoredCube>();
+	public CubeBase(String lookupFolder, Boolean isRunningSpark) {
+		if (isRunningSpark == false) {
+			try {
+				String line;
+				Scanner scanner = new Scanner(new FileReader("InputFiles/" + lookupFolder
+						+ "/dbc.ini"));
+				while (scanner.hasNextLine()) {
+					line = scanner.nextLine();
+					String results[] = line.split(";");
+					DB = new Database(results[1], results[3]);
+					dimensions = new ArrayList<Dimension>();
+					BasicCubes = new ArrayList<BasicStoredCube>();
+				}
+				scanner.close();
+			} catch (FileNotFoundException e1) {
+				System.err.println("Unable to work correctly with dbc.ini for the setup of the Cubebase");
+				e1.printStackTrace();
 			}
-			scanner.close();
-		} catch (FileNotFoundException e1) {
-			System.err.println("Unable to work correctly with dbc.ini for the setup of the Cubebase");
-			e1.printStackTrace();
+		} else {
+			DB = new Database();
+			dimensions = new ArrayList<Dimension>();
+			BasicCubes = new ArrayList<BasicStoredCube>();
 		}
 	}
 
@@ -85,7 +90,12 @@ public class CubeBase {
 		DB.setPassword(password);
 		DB.registerDatabase();
 		DB.GenerateTableList();
-
+	}
+	
+	// Added by Konstantinos Kadoglou
+	public void registerCubeBase(String filename, String cubeName) {
+		DB.setDBName(filename);
+		DB.GenerateTableListSpark(filename, cubeName);
 	}
 
 	public void addDimension(String nameDim) {

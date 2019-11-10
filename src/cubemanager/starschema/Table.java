@@ -20,6 +20,10 @@
 
 package cubemanager.starschema;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
@@ -51,6 +55,29 @@ public class Table {
     		
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+    }
+    
+    // Added by Konstantinos Kadoglou
+    // TODO: Folder is static right now. Should be passed with parameter.
+    public void setAttribute(String filename, String path) {
+		BufferedReader brTest;
+		try {
+			brTest = new BufferedReader(new FileReader(path + "/" + filename + ".csv"));
+			try {
+			    String text;
+				text = brTest.readLine();
+			    String[] strArray = text.split(",");
+			    for (int i = 0; i < strArray.length; i = i + 2) {
+//					System.out.println("Attribute : " + strArray[i] + "  ~~~ Type : " + strArray[i+1]);
+					System.out.format("Attribute : %-20s --> Type : %-3s", strArray[i], strArray[i+1] + "\t\t\t\t\n");
+			    	LstAttr.add(new Attribute(strArray[i], strArray[i+1]));
+			    }
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
 		}
     }
     

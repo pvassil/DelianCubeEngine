@@ -116,15 +116,38 @@ public class SimpleQueryProcessorEngine extends UnicastRemoteObject implements I
 			String passwd, String inputFolder, String cubeName)
 			throws RemoteException {
 		//createDefaultFolders();
-		initializeCubeMgr(inputFolder);
+		initializeCubeMgr(inputFolder, false);
 		cubeManager.CreateCubeBase(schemaName, login, passwd);
 		constructDimension(inputFolder, cubeName);
 		cubeManager.setCubeQueryTranslator();
 		System.out.println("DONE WITH INIT");
 	}
-		
-	private void initializeCubeMgr(String lookupFolder) throws RemoteException {
-		cubeManager = new CubeManager(lookupFolder);
+	
+	/* 
+	 * Added by Konstantinos Kadoglou
+	 * 
+	 * A method to initialize the Cube without connecting to JDBC,
+	 * and getting ready to use DelianCube Engine with Spark
+	 */
+	@Override
+	public void initializeSpark(String schemaName, String inputFolder, String cubeName) throws RemoteException {
+		initializeCubeMgr(inputFolder, true);
+		System.out.println(inputFolder);
+		System.out.println(cubeName);
+		System.out.println(schemaName);
+		cubeManager.CreateCubeBase(schemaName, cubeName);
+		constructDimension(inputFolder, cubeName);
+		cubeManager.setCubeQueryTranslator();
+		System.out.println("Cube Created successfully! :)");
+	}
+	
+	/* 
+	 * Changed from Konstantinos Kadoglou, Boolean isRunningSpark
+	 * will be "false" if called from initializeConnection() for JDBC
+	 * will be "true" if called from initializeSpark() for Spark 
+	 */
+	private void initializeCubeMgr(String lookupFolder, Boolean isRunningSpark) throws RemoteException {
+		cubeManager = new CubeManager(lookupFolder, isRunningSpark);
 	}
 
 	private void constructDimension(String inputlookup, String cubeName)
@@ -384,7 +407,7 @@ System.out.println("@SRV: INFO FILE\t" + resMetadata.getResultInfoFile());
 
 	
 	/**
-	 * Populates a tab-separated file where the result of a query is stored and ρeturns its location.
+	 * Populates a tab-separated file where the result of a query is stored and Ï�eturns its location.
 	 * <p>
 	 * The goal of this method is to output a file containing the result of a query
 	 * The name of the file is the name of the query + extension tab 

@@ -1,4 +1,4 @@
-sales_id,location_id,product_id,date_bought,sales
+sales_id,location_id,product_id,date_added,sales
 0,6864,7414,1,1
 1,3478,3655,3,4
 2,7608,6100,5,7

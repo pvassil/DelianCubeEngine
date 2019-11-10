@@ -39,8 +39,8 @@ public class CubeManager {
 	private ICubeQueryTranslator cubeQueryTranslator;
 	private CubeQueryTranslatorFactory cubeQueryTranslatorFactory;
 
-	public CubeManager(String lookupFolder) {
-		CBase = new CubeBase(lookupFolder);
+	public CubeManager(String lookupFolder, Boolean isRunningSpark) {
+		CBase = new CubeBase(lookupFolder, isRunningSpark);
 		cubeQueryTranslatorFactory = new CubeQueryTranslatorFactory();
 	}
 
@@ -57,6 +57,12 @@ public class CubeManager {
 	public void CreateCubeBase(String filename, String username,
 			String password) {
 		CBase.registerCubeBase(filename, username, password);
+	}
+	
+	// Added by Konstantinos Kadoglou
+	public void CreateCubeBase(String filename, String cubeName){
+		System.out.println("Register cube : " + cubeName);
+		CBase.registerCubeBase(filename, cubeName);
 	}
 	
 	public CubeBase getCubeBase(){
