@@ -20,11 +20,12 @@
 
 package cubemanager.cubebase;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import cubemanager.starschema.DimensionTable;
 
-public class Dimension{
+public class Dimension {
     /**
 	 * @uml.property  name="hierachy"
 	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="CubeMgr.CubeBase.Level"

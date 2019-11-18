@@ -45,7 +45,8 @@ public class Table {
     	LstAttr.addAll(newtable.LstAttr);
     }
     
-    public void setAttribute(Connection con){
+    // ABSTRACT RDBMS
+    public void setAttribute(java.sql.Connection con){
     	try {
     		DatabaseMetaData meta = con.getMetaData();
     	    ResultSet rsColumns = meta.getColumns(null, null, tableName, null);
@@ -58,6 +59,7 @@ public class Table {
 		}
     }
     
+    // ABSTRACT SPARK
     // Added by Konstantinos Kadoglou
     // TODO: Folder is static right now. Should be passed with parameter.
     public void setAttribute(String filename, String path) {

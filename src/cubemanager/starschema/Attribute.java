@@ -20,7 +20,9 @@
 
 package cubemanager.starschema;
 
-public class Attribute {
+import java.io.Serializable;
+
+public class Attribute implements Serializable{
 	/**
 	 * @uml.property  name="name"
 	 */

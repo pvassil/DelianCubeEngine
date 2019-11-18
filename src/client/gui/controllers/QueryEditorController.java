@@ -257,6 +257,7 @@ public class QueryEditorController extends AbstractController {
 			a.show();
 			return -100;
 		}
+		System.out.println("HANDLERUNQUERYWITHMODELS");
 		result = executeAndDisplayeQueryWithModels(queryString);
 		return result;
 	}//end handleRunQueryWithModels

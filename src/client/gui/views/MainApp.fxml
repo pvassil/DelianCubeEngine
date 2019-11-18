@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXProgressBar?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
@@ -17,7 +18,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="448.0" prefWidth="732.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="531.0" prefWidth="732.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane fx:id="leftPane" prefHeight="527.0" prefWidth="280.0" style="-fx-background-color: #354052;">
          <children>
@@ -61,7 +62,7 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <JFXProgressBar fx:id="progressBarGUI" layoutX="14.0" layoutY="432.0" prefHeight="4.0" prefWidth="250.0">
+            <JFXProgressBar fx:id="progressBarGUI" layoutX="14.0" layoutY="515.0" prefHeight="4.0" prefWidth="250.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -95,12 +96,7 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="407.0" layoutY="408.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@/res/info.png" />
-               </image>
-            </ImageView>
-            <VBox alignment="CENTER" layoutX="102.0" layoutY="59.0" prefHeight="340.0" prefWidth="250.0" spacing="30.0">
+            <VBox alignment="CENTER" layoutX="103.0" layoutY="125.0" prefHeight="340.0" prefWidth="250.0" spacing="30.0">
                <children>
                   <JFXTextField fx:id="schemaTextField" alignment="CENTER" focusColor="#354052" prefHeight="39.0" prefWidth="250.0" promptText="Schema">
                      <font>
@@ -109,16 +105,6 @@
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
-                  </JFXTextField>
-                  <JFXTextField fx:id="usernameTextField" alignment="CENTER" focusColor="#354052" prefHeight="39.0" prefWidth="250.0" promptText="DB Username">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </JFXTextField>
-                  <JFXTextField fx:id="passwordTextField" alignment="CENTER" focusColor="#354052" prefHeight="39.0" prefWidth="250.0" promptText="DB Password">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
                   </JFXTextField>
                   <JFXTextField fx:id="inputFolderTextField" alignment="CENTER" focusColor="#354052" prefHeight="39.0" prefWidth="250.0" promptText="Input Folder">
                      <font>
@@ -130,14 +116,25 @@
                         <Font size="14.0" />
                      </font>
                   </JFXTextField>
+                  <JFXTextField fx:id="usernameTextField" alignment="CENTER" focusColor="#354052" prefHeight="39.0" prefWidth="250.0" promptText="DB Username">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="passwordTextField" alignment="CENTER" focusColor="#354052" prefHeight="39.0" prefWidth="250.0" promptText="DB Password">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXTextField>
                </children>
             </VBox>
-            <JFXButton fx:id="connectButton" alignment="CENTER" layoutX="135.0" layoutY="406.0" onAction="#connectDB" prefHeight="34.0" prefWidth="185.0" style="-fx-background-color: #384356;" text="Connect" textFill="WHITE">
+            <JFXButton fx:id="connectButton" alignment="CENTER" layoutX="135.0" layoutY="479.0" onAction="#connectDB" prefHeight="34.0" prefWidth="185.0" style="-fx-background-color: #384356;" text="Connect" textFill="WHITE">
                <font>
                   <Font size="17.0" />
                </font>
             </JFXButton>
             <TextArea fx:id="textLogger" editable="false" layoutX="13.0" layoutY="68.0" prefHeight="331.0" prefWidth="425.0" text="Application Started!" visible="false" />
+            <ChoiceBox fx:id="dropMenuConnection" layoutX="103.0" layoutY="68.0" onAction="#dropMenuClicked" prefHeight="36.0" prefWidth="250.0" style="-fx-background-color: #aeb8bf;" />
          </children>
       </Pane>
    </children>

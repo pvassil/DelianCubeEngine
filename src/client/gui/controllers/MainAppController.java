@@ -19,23 +19,6 @@
 
 package client.gui.controllers;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import mainengine.IMainEngine;
-import client.gui.utils.ExitController;
-import client.gui.utils.LauncherForViewControllerPairs;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -46,6 +29,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
@@ -56,9 +41,13 @@ import client.ClientRMITransferer;
 import client.gui.utils.CustomAlertDialog;
 import client.gui.utils.ExitController;
 import client.gui.utils.LauncherForViewControllerPairs;
+import cubemanager.cubebase.Dimension;
+import cubemanager.cubebase.Level;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
@@ -67,7 +56,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import mainengine.IMainEngine;
-import javafx.fxml.Initializable;
 
 public class MainAppController extends AbstractController implements Initializable{
 	@FXML
@@ -75,6 +63,9 @@ public class MainAppController extends AbstractController implements Initializab
 	
 	private Boolean serverStatus;
 	private IMainEngine service;
+	
+	private HashMap<String, String> userInputList = new HashMap<>();
+
 	
 	public MainAppController(Boolean serverStatus, IMainEngine service) {
 		super();
@@ -273,14 +264,41 @@ public class MainAppController extends AbstractController implements Initializab
 
     @FXML
     private GridPane buttonGrid;
+    
+    @FXML
+    private ChoiceBox dropMenuConnection;
+    
+    @FXML
+    public void dropMenuClicked(ActionEvent event) {
+    	String typeOfConnection = dropMenuConnection.getValue().toString();
+    	if (typeOfConnection.equals("RDBMS")) {
+    		usernameTextField.setVisible(true);
+    		passwordTextField.setVisible(true);
+    	}
+    	else if (typeOfConnection.equals("Spark")) {
+    		usernameTextField.setVisible(false);
+    		passwordTextField.setVisible(false);
+    	}
+    }
 	
 	@FXML
 	public void connectDB(ActionEvent event) throws InterruptedException{
 		progressBarGUI.setVisible(true);
 		try {
-			service.initializeConnection(schemaTextField.getText(), usernameTextField.getText(),
-					passwordTextField.getText(), inputFolderTextField.getText(),
-					cubeTextField.getText());
+			if (dropMenuConnection.getValue().toString().equals("RDBMS")) {
+				userInputList.put("username", usernameTextField.getText());
+				userInputList.put("password", passwordTextField.getText());
+				userInputList.put("schemaName", schemaTextField.getText());
+				userInputList.put("cubeName", cubeTextField.getText());
+				userInputList.put("inputFolder", inputFolderTextField.getText());
+			}
+			else if (dropMenuConnection.getValue().toString().equals("Spark")) {
+				userInputList.put("schemaName", schemaTextField.getText());
+				userInputList.put("cubeName", cubeTextField.getText());
+				userInputList.put("inputFolder", inputFolderTextField.getText());
+			}
+			service.initializeConnection(dropMenuConnection.getValue().toString(), userInputList);
+
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -288,9 +306,9 @@ public class MainAppController extends AbstractController implements Initializab
 		PrintWriter writer;
 		try {
 			writer = new PrintWriter("latestDB.txt", "UTF-8");
-			writer.println(schemaTextField.getText() + "," + usernameTextField.getText() + "," +
-					passwordTextField.getText() + "," + inputFolderTextField.getText() + "," +
-					cubeTextField.getText());
+			writer.println(schemaTextField.getText() + "," + inputFolderTextField.getText() + "," +
+					cubeTextField.getText() + "," + usernameTextField.getText() + "," +
+					passwordTextField.getText());
 			writer.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -339,11 +357,15 @@ public class MainAppController extends AbstractController implements Initializab
 	    }
 	    if (ar != null) {
 	    	schemaTextField.setText(ar[0]);
-	    	usernameTextField.setText(ar[1]);
-	    	passwordTextField.setText(ar[2]);
-	    	inputFolderTextField.setText(ar[3]);
-	    	cubeTextField.setText(ar[4]);
+	    	inputFolderTextField.setText(ar[1]);
+	    	cubeTextField.setText(ar[2]);
+	    	usernameTextField.setText(ar[3]);
+	    	passwordTextField.setText(ar[4]);
 	    }
+	    
+	    dropMenuConnection.getItems().add("RDBMS");
+	    dropMenuConnection.getItems().add("Spark");
+	    dropMenuConnection.setValue("RDBMS");
 	}
 	
 }//end class MAinAppController

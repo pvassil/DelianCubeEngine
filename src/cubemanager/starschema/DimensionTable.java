@@ -20,7 +20,9 @@
 
 package cubemanager.starschema;
 
-public class DimensionTable extends Table {
+import java.io.Serializable;
+
+public class DimensionTable extends Table{
     
 	
 	public DimensionTable(String name) {

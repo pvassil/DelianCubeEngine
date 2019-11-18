@@ -20,14 +20,13 @@
 
 package cubemanager.cubebase;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.sql.Connection;
 //import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Scanner;
 
+import cubemanager.connection.Connection;
+import cubemanager.connection.ConnectionFactory;
 import cubemanager.starschema.Database;
 import cubemanager.starschema.DimensionTable;
 import cubemanager.starschema.FactTable;
@@ -42,60 +41,23 @@ public class CubeBase {
 	private String username;
 	private String password;
 	private String name;
-	private Database DB;
+	private Connection connection;
 	public List<Dimension> dimensions;
 	public List<BasicStoredCube> BasicCubes;
  
-	public Database getDatabase(){
-		return DB;
-	}
-	/**
-	 * The method looks for the file dbc.ini inside the folder prescribed as the method's parameter.
-	 * Then it processed the file and relates to the database prescribed in the dbc.ini file
-	 *  
-	 * @param lookupFolder	The FOLDER where the input info for the project lies. Must be in the InputFiles folder.
-	 */
-	public CubeBase(String lookupFolder, Boolean isRunningSpark) {
-		if (isRunningSpark == false) {
-			try {
-				String line;
-				Scanner scanner = new Scanner(new FileReader("InputFiles/" + lookupFolder
-						+ "/dbc.ini"));
-				while (scanner.hasNextLine()) {
-					line = scanner.nextLine();
-					String results[] = line.split(";");
-					DB = new Database(results[1], results[3]);
-					dimensions = new ArrayList<Dimension>();
-					BasicCubes = new ArrayList<BasicStoredCube>();
-				}
-				scanner.close();
-			} catch (FileNotFoundException e1) {
-				System.err.println("Unable to work correctly with dbc.ini for the setup of the Cubebase");
-				e1.printStackTrace();
-			}
-		} else {
-			DB = new Database();
-			dimensions = new ArrayList<Dimension>();
-			BasicCubes = new ArrayList<BasicStoredCube>();
-		}
+	public Connection getConnection(){
+		return connection;
 	}
 
-	public void registerCubeBase(String filename, String username,
-			String password) {
-		name = filename;
-		this.username = username;
-		this.password = password;
-		DB.setDBName(name);
-		DB.setUsername(username);
-		DB.setPassword(password);
-		DB.registerDatabase();
-		DB.GenerateTableList();
+	public CubeBase(String typeOfConnection, HashMap<String, String> userInputList) {
+		ConnectionFactory connectionFactory = new ConnectionFactory();
+		connection = connectionFactory.createConnection(typeOfConnection, userInputList);
+		dimensions = new ArrayList<Dimension>();
+		BasicCubes = new ArrayList<BasicStoredCube>();
 	}
-	
-	// Added by Konstantinos Kadoglou
-	public void registerCubeBase(String filename, String cubeName) {
-		DB.setDBName(filename);
-		DB.GenerateTableListSpark(filename, cubeName);
+
+	public void registerCubeBase(HashMap<String, String> userInputList) {
+		connection.registerCubeBase(userInputList);
 	}
 
 	public void addDimension(String nameDim) {
@@ -103,7 +65,7 @@ public class CubeBase {
 	}
 
 	public void addDimensionTbl(String dimensionTbl) {
-		Table tmp_tbl = DB.getDBTableInstance(dimensionTbl);
+		Table tmp_tbl = connection.getConnectionTableInstance(dimensionTbl);
 		DimensionTable dm = new DimensionTable(tmp_tbl. getTableName());
 		dm.addAllAttribute(tmp_tbl);
 		this.getLastInsertedDimension().setDimTbl(dm);
@@ -124,7 +86,7 @@ public class CubeBase {
 				LevelAttribute lvlattr = new LevelAttribute(tmp_str[1],
 						tmp_str[0]);
 				lvlattr.setLevel(lvl);
-				lvlattr.setAttribute(DB.getFieldOfSqlTable(tmp_str[0],
+				lvlattr.setAttribute(connection.getFieldOfSqlTable(tmp_str[0],
 						tmp_str[1]));
 
 				lvl.addLevelAttribute(lvlattr);
@@ -145,8 +107,8 @@ public class CubeBase {
 
 	}
 
-	public void addSqlRelatedTbl(String sqltable) {
-		Table tmp_tbl = DB.getDBTableInstance(sqltable);
+	public void addConnectionRelatedTbl(String connectionTable) {
+		Table tmp_tbl = connection.getConnectionTableInstance(connectionTable);
 		BasicStoredCube tmp = BasicCubes.get(BasicCubes.size() - 1);
 		FactTable fctbl = new FactTable(tmp_tbl. getTableName());
 		fctbl.addAllAttribute(tmp_tbl);
@@ -175,13 +137,9 @@ public class CubeBase {
 		int i = 0;
 		for (String item : measurelst) {
 			String[] tmp = measureRefField.get(i).split("\\.");
-			Measure msrToAdd = new Measure(i +1,item, this.DB.getFieldOfSqlTable(tmp[0], tmp[1]));
+			Measure msrToAdd = new Measure(i +1,item, this.connection.getFieldOfSqlTable(tmp[0], tmp[1]));
 			last_cube.Msr.add(msrToAdd);
 		}
-	}
-
-	public Connection getSqlConnection() {
-		return DB.getConnection();
 	}
 
 	private Integer findDimensionIdByName(String nameDimension) {
@@ -205,22 +163,8 @@ public class CubeBase {
 	}
 
 	public Result executeQueryToProduceResult(String queryString, Result result) {
-		return DB.executeQueryToProduceResult(queryString, result);
+		return connection.executeQueryToProduceResult(queryString, result);
 	}
-	
-//	/*
-//	 * OPEN SINCE CINECUBES:
-//	 * Needs a code or parameter to finding proper cube. Now we check only the last cube in the cubebase 
-//	 */
-//	public Measure getMeasureInstanceByName(String name) {
-//		BasicStoredCube last_cube = BasicCubes.get(BasicCubes.size() - 1);
-//		for (int i = 0; i < last_cube.Msr.size(); i++) {
-//			Measure msr = last_cube.Msr.get(i);
-//			if (msr.getName().equals(name))
-//				return msr;
-//		}
-//		return null;
-//	}
 	
 	public String getChildOfGamma(String[] gamma_tmp) {
 		String ret_value = null;
@@ -240,5 +184,12 @@ public class CubeBase {
 		return ret_value;
 	}
 
+	public List<Dimension> getDimensions(){
+		return dimensions;
+	}
+	
+	public List<BasicStoredCube> getBasicCubes(){
+		return BasicCubes;
+	}
 
 }

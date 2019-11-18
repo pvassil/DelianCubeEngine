@@ -75,7 +75,7 @@ public class MainApp extends AbstractApplication {
 		if(service == null) {
 			diagnostics = "Unable to lookup RMI server, exiting";
 			System.out.println(diagnostics);
-//			System.exit(-100);
+			System.exit(-100);
 		}
 		else {
 			diagnostics = "Successfully found RMI server";

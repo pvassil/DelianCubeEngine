@@ -39,8 +39,8 @@ public class CubeManager {
 	private ICubeQueryTranslator cubeQueryTranslator;
 	private CubeQueryTranslatorFactory cubeQueryTranslatorFactory;
 
-	public CubeManager(String lookupFolder, Boolean isRunningSpark) {
-		CBase = new CubeBase(lookupFolder, isRunningSpark);
+	public CubeManager(String typeOfConnection, HashMap<String, String> userInputList) {
+		CBase = new CubeBase(typeOfConnection, userInputList);
 		cubeQueryTranslatorFactory = new CubeQueryTranslatorFactory();
 	}
 
@@ -54,16 +54,15 @@ public class CubeManager {
 		return result;
 	}
 	
-	public void CreateCubeBase(String filename, String username,
-			String password) {
-		CBase.registerCubeBase(filename, username, password);
+	public void CreateCubeBase(HashMap<String, String> userInputList) {
+		CBase.registerCubeBase(userInputList);
 	}
 	
-	// Added by Konstantinos Kadoglou
-	public void CreateCubeBase(String filename, String cubeName){
-		System.out.println("Register cube : " + cubeName);
-		CBase.registerCubeBase(filename, cubeName);
-	}
+//	// Added by Konstantinos Kadoglou
+//	public void CreateCubeBase(String filename, String cubeName){
+//		System.out.println("Register cube : " + cubeName);
+//		CBase.registerCubeBase(filename, cubeName);
+//	}
 	
 	public CubeBase getCubeBase(){
 		return CBase;
@@ -82,7 +81,7 @@ public class CubeManager {
 			ArrayList<String> measureRefField) {
 
 		CBase.addCube(name_creation);
-		CBase.addSqlRelatedTbl(sqltable);
+		CBase.addConnectionRelatedTbl(sqltable);
 		CBase.setCubeDimension(dimensionlst, DimemsionRefField);
 	}
 
@@ -135,7 +134,7 @@ public class CubeManager {
 		cubequery.setAggregateFunction(aggregateFunction);
 		/* Must Create Measure In Cube Parser->> I Have Done this */
 		/* Search for Measure */
-		Measure msrToAdd = new Measure(1,measureName,CBase.getDatabase().getFieldOfSqlTable(Cbname,
+		Measure msrToAdd = new Measure(1,measureName,CBase.getConnection().getFieldOfSqlTable(Cbname,
 				measureName));
 		cubequery.getListMeasure().add(msrToAdd);
 		//msrname = measureName;
@@ -182,12 +181,6 @@ public class CubeManager {
 		//1. Create an ExtractionMethod (for the moment: SQLQuery)
 		ExtractionMethod extractionMethod = ExtractionMethodFactory.createMethod();  
 		currentCubeQuery.setExtractionMethod(extractionMethod);   
-
-		
-		//OLD setup, where you had the execution at CubeQuery!
-		//Result res = extractionMethod.getResult();
-		//currentCubeQuery.produceExtractionMethod();
-		//String queryString = extractionMethod.toString();	
 		
 		//2. Convert the cubequery to sth that the DBMS can execute, i.e., a query string
 		String queryString = produceExtractionMethod(currentCubeQuery);

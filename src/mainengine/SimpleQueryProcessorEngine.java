@@ -19,10 +19,6 @@
 
 
 package mainengine;
-import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
-import java.time.Duration;
-import java.time.Instant;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -31,18 +27,23 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 //import java.sql.ResultSet;
 
-import mainengine.rmiTransfer.RMIInputStream;
-import mainengine.rmiTransfer.RMIOutputStream;
-import mainengine.rmiTransfer.RMIInputStreamImpl;
-import mainengine.rmiTransfer.RMIOutputStreamImpl;
-
 import cubemanager.CubeManager;
 import cubemanager.cubebase.CubeQuery;
+import cubemanager.cubebase.Dimension;
+import mainengine.rmiTransfer.RMIInputStream;
+import mainengine.rmiTransfer.RMIInputStreamImpl;
+import mainengine.rmiTransfer.RMIOutputStream;
+import mainengine.rmiTransfer.RMIOutputStreamImpl;
 //import exctractionmethod.SqlQuery;
 /*
 import filecreation.FileMgr;
@@ -112,42 +113,16 @@ public class SimpleQueryProcessorEngine extends UnicastRemoteObject implements I
 	 * @see mainengine.IMainEngine#initializeConnection(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public void initializeConnection(String schemaName, String login,
-			String passwd, String inputFolder, String cubeName)
-			throws RemoteException {
-		//createDefaultFolders();
-		initializeCubeMgr(inputFolder, false);
-		cubeManager.CreateCubeBase(schemaName, login, passwd);
-		constructDimension(inputFolder, cubeName);
+	public void initializeConnection(String typeOfConnection, HashMap<String, String> userInputList) throws RemoteException {
+		initializeCubeMgr(typeOfConnection, userInputList);
+		cubeManager.CreateCubeBase(userInputList);
+		constructDimension(userInputList.get("inputFolder"), userInputList.get("cubeName"));
 		cubeManager.setCubeQueryTranslator();
 		System.out.println("DONE WITH INIT");
 	}
-	
-	/* 
-	 * Added by Konstantinos Kadoglou
-	 * 
-	 * A method to initialize the Cube without connecting to JDBC,
-	 * and getting ready to use DelianCube Engine with Spark
-	 */
-	@Override
-	public void initializeSpark(String schemaName, String inputFolder, String cubeName) throws RemoteException {
-		initializeCubeMgr(inputFolder, true);
-		System.out.println(inputFolder);
-		System.out.println(cubeName);
-		System.out.println(schemaName);
-		cubeManager.CreateCubeBase(schemaName, cubeName);
-		constructDimension(inputFolder, cubeName);
-		cubeManager.setCubeQueryTranslator();
-		System.out.println("Cube Created successfully! :)");
-	}
-	
-	/* 
-	 * Changed from Konstantinos Kadoglou, Boolean isRunningSpark
-	 * will be "false" if called from initializeConnection() for JDBC
-	 * will be "true" if called from initializeSpark() for Spark 
-	 */
-	private void initializeCubeMgr(String lookupFolder, Boolean isRunningSpark) throws RemoteException {
-		cubeManager = new CubeManager(lookupFolder, isRunningSpark);
+
+	private void initializeCubeMgr(String typeOfConnection, HashMap<String, String> userInputList) throws RemoteException {
+		cubeManager = new CubeManager(typeOfConnection, userInputList);
 	}
 
 	private void constructDimension(String inputlookup, String cubeName)
@@ -182,11 +157,6 @@ public class SimpleQueryProcessorEngine extends UnicastRemoteObject implements I
 		}
 	}
 
-//	public void optionsChoice(boolean audio, boolean word)
-//			throws RemoteException {
-//		optMgr.setAudio(audio);
-//		optMgr.setWord(word);
-//	}
 	/* (non-Javadoc)
 	 * @see mainengine.IMainEngine#answerCubeQueriesFromFile(java.io.File)
 	 */
@@ -203,8 +173,6 @@ public class SimpleQueryProcessorEngine extends UnicastRemoteObject implements I
 				String queryString = sc.next();
 				filename = answerCubeQueryFromString(queryString);
 				fileLocations.add(filename);
-
-				
 			}
 			
 			scanner.close();
@@ -234,6 +202,7 @@ public class SimpleQueryProcessorEngine extends UnicastRemoteObject implements I
 	 */
 	@Override
 	public String answerCubeQueryFromString(String queryRawString) throws RemoteException{
+
 		//Use a hashmap to get any useful data (like queryname) from the raw query string
 		HashMap<String, String> queryParams = new HashMap<String, String>();
 		
@@ -257,12 +226,6 @@ public class SimpleQueryProcessorEngine extends UnicastRemoteObject implements I
 				
 		//3b. print result to file
 		String outputLocation = this.printToTabTextFile(currentCubQuery,  "OutputFiles" + File.separator);
-		//String outputInfoLocation = this.printQueryInfo(currentCubQuery,  "OutputFiles/");
-		//System.out.println("SQP produces: " + outputLocation);		
-
-		//Replaced all printing of String[][] with printing of Cells which seems to be identical 
-		//res.printStringArrayTostream(System.out, res.getResultArray());
-		//System.out.println("------- Done with printString, go for printCells  --------------------------"+"\n");
 
 		//TODO SUPER MUST: devise a nice way to handle the output to console when in development mode
 		if ((ModeOfWork.mode == WorkMode.DEBUG_GLOBAL)||(ModeOfWork.mode == WorkMode.DEBUG_QUERY)) {
@@ -336,9 +299,9 @@ public class SimpleQueryProcessorEngine extends UnicastRemoteObject implements I
 		resMetadata.setLocalFolder("OutputFiles" + File.separator);
 		resMetadata.setResultFile(outputLocation);
 		resMetadata.setResultInfoFile(outputInfoLocation);
-System.out.println("@SRV: FOLDER\t" + resMetadata.getLocalFolder());
-System.out.println("@SRV: DATA FILE\t" + resMetadata.getResultFile());
-System.out.println("@SRV: INFO FILE\t" + resMetadata.getResultInfoFile());		
+		System.out.println("@SRV: FOLDER\t" + resMetadata.getLocalFolder());
+		System.out.println("@SRV: DATA FILE\t" + resMetadata.getResultFile());
+		System.out.println("@SRV: INFO FILE\t" + resMetadata.getResultInfoFile());		
 
 
 		
@@ -499,9 +462,6 @@ System.out.println("@SRV: INFO FILE\t" + resMetadata.getResultInfoFile());
 	private String computeQueryInfoName(CubeQuery cubequery, String outputFolder) {
 		String fileName = outputFolder + cubequery.getName() + "_info.txt";
 		return fileName;
-	}//end method
-
-
+	}
 	
-	
-}//end class
+}
