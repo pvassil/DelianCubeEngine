@@ -72,9 +72,8 @@ public class SimpleQueryProcessorEngine extends UnicastRemoteObject implements I
 	private static final long serialVersionUID = 313553263459485366L;
 	private CubeManager cubeManager;
 	//private StoryMgr storMgr;
-	private ParserManager prsMng;
-//	private Options optMgr;
-//	private String msrname;
+	//	private Options optMgr;
+	//	private String msrname;
 	
 	private CubeQuery currentCubeQuery;
 	private Result currentResult;
@@ -114,47 +113,11 @@ public class SimpleQueryProcessorEngine extends UnicastRemoteObject implements I
 	 */
 	@Override
 	public void initializeConnection(String typeOfConnection, HashMap<String, String> userInputList) throws RemoteException {
-		initializeCubeMgr(typeOfConnection, userInputList);
+		cubeManager = new CubeManager(typeOfConnection, userInputList);
 		cubeManager.CreateCubeBase(userInputList);
-		constructDimension(userInputList.get("inputFolder"), userInputList.get("cubeName"));
+		cubeManager.constructCube(userInputList.get("inputFolder"), userInputList.get("cubeName"));
 		cubeManager.setCubeQueryTranslator();
 		System.out.println("DONE WITH INIT");
-	}
-
-	private void initializeCubeMgr(String typeOfConnection, HashMap<String, String> userInputList) throws RemoteException {
-		cubeManager = new CubeManager(typeOfConnection, userInputList);
-	}
-
-	private void constructDimension(String inputlookup, String cubeName)
-			throws RemoteException {
-		try {
-			this.parseFile(new File("InputFiles/" + inputlookup + "/"
-					+ cubeName + ".ini"));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	private void parseFile(File file) throws FileNotFoundException {
-		if (file != null) {
-			prsMng = new ParserManager();
-			@SuppressWarnings("resource")
-			Scanner sc = (new Scanner(file)).useDelimiter(";");
-			while (sc.hasNext()) {
-				prsMng.parse(sc.next() + ";");
-				if (prsMng.mode == 2) {
-					this.cubeManager.InsertionDimensionLvl(
-							prsMng.name_creation, prsMng.sqltable,
-							prsMng.originallvllst, prsMng.customlvllst,
-							prsMng.dimensionlst);
-				} else if (prsMng.mode == 1) {
-					this.cubeManager.InsertionCube(prsMng.name_creation,
-							prsMng.sqltable, prsMng.dimensionlst,
-							prsMng.originallvllst, prsMng.measurelst,
-							prsMng.measurefields);
-				}
-			}
-		}
 	}
 
 	/* (non-Javadoc)

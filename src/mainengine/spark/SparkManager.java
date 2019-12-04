@@ -1,9 +1,6 @@
 package mainengine.spark;
 
 import java.io.File;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,9 +67,14 @@ public class SparkManager {
 		}
 		long startTime = System.currentTimeMillis();
 		Dataset<Row> queryDS = spark.sql(query);
+		queryDS.show();
+		queryDS.printSchema();
+		Dataset<Row> temp = queryDS.filter(row -> row.getAs("subcategory").equals("subcategory1"));
+		temp.show();
+
 		long estimatedTime = System.currentTimeMillis() - startTime;
 		System.out.println(estimatedTime);
-		result = generateResult(queryDS, result);
+		result = generateResult(temp, result);
 		return result;
 	}
 	
@@ -80,7 +82,7 @@ public class SparkManager {
 		List<Row> queryList = queryDS.collectAsList();
 		int columnCount = queryDS.columns().length;
 		int rowCount = queryDS.collectAsList().size();
-		System.out.println(columnCount + " 9999999999999999" + rowCount);
+		System.out.println(columnCount + " 9999999999999999 " + rowCount);
 		boolean ret_value=false;
 		
 		String resultArray [][] = new String[rowCount+2][columnCount];

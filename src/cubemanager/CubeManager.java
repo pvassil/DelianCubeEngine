@@ -20,10 +20,13 @@
 
 package cubemanager;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.rmi.RemoteException;
 //import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
 import cubemanager.cubebase.BasicStoredCube;
 import cubemanager.cubebase.CubeBase;
@@ -31,6 +34,7 @@ import cubemanager.cubebase.CubeQuery;
 import cubemanager.cubebase.Measure;
 import exctractionmethod.ExtractionMethod;
 import exctractionmethod.ExtractionMethodFactory;
+import parsermgr.ParserManager;
 import result.Result;
 
 public class CubeManager {
@@ -38,6 +42,7 @@ public class CubeManager {
 	private CubeBase CBase;
 	private ICubeQueryTranslator cubeQueryTranslator;
 	private CubeQueryTranslatorFactory cubeQueryTranslatorFactory;
+	private ParserManager prsMng;
 
 	public CubeManager(String typeOfConnection, HashMap<String, String> userInputList) {
 		CBase = new CubeBase(typeOfConnection, userInputList);
@@ -58,11 +63,37 @@ public class CubeManager {
 		CBase.registerCubeBase(userInputList);
 	}
 	
-//	// Added by Konstantinos Kadoglou
-//	public void CreateCubeBase(String filename, String cubeName){
-//		System.out.println("Register cube : " + cubeName);
-//		CBase.registerCubeBase(filename, cubeName);
-//	}
+	public void constructCube(String inputlookup, String cubeName)
+			throws RemoteException {
+		try {
+			this.parseFile(new File("InputFiles/" + inputlookup + "/"
+					+ cubeName + ".ini"));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void parseFile(File file) throws FileNotFoundException {
+		if (file != null) {
+			prsMng = new ParserManager();
+			@SuppressWarnings("resource")
+			Scanner sc = (new Scanner(file)).useDelimiter(";");
+			while (sc.hasNext()) {
+				prsMng.parse(sc.next() + ";");
+				if (prsMng.mode == 2) {
+					this.InsertionDimensionLvl(
+							prsMng.name_creation, prsMng.sqltable,
+							prsMng.originallvllst, prsMng.customlvllst,
+							prsMng.dimensionlst);
+				} else if (prsMng.mode == 1) {
+					this.InsertionCube(prsMng.name_creation,
+							prsMng.sqltable, prsMng.dimensionlst,
+							prsMng.originallvllst, prsMng.measurelst,
+							prsMng.measurefields);
+				}
+			}
+		}
+	}
 	
 	public CubeBase getCubeBase(){
 		return CBase;
