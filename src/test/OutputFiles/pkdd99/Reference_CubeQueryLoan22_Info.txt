@@ -1,7 +1,0 @@
-QueryName: CubeQueryLoan22_Copy
-BasicCube : loan_cube
-Aggregate Function : Sum
-Measure : amount
-Gamma Expression: account_dim.lvl1 , date_dim.lvl3
-Sigma Expression: account_dim.lvl2='south Moravia' AND status_dim.lvl0='Running Contract/OK'
-

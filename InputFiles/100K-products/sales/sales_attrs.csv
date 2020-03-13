@@ -1,0 +1,1 @@
+sale_id,INT,location_id,INT,product_id,INT,date_id,INT,sales,DECIMAL

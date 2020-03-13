@@ -1,0 +1,6 @@
+CubeName:loan
+Name: LoanQuery11_S1_CG-Prtl
+AggrFunc:Avg
+Measure:amount
+Gamma:account_dim.lvl1,date_dim.lvl2
+Sigma:account_dim.lvl2='north Moravia'

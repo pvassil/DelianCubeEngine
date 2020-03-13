@@ -1,72 +1,162 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>gr.uoi.cse</groupId>
+	<groupId>com.DelianCubeEngine</groupId>
 	<artifactId>DelianCubeEngine</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	
 	<properties>
-    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spark.compatible.verison>2.3</spark.compatible.verison>
 	</properties>
+	
 	<build>
-	  <sourceDirectory>src</sourceDirectory>
-	  <resources>
-	    <resource>
-	      <directory>src</directory>
-	      <excludes>
-	        <exclude>**/*.java</exclude>
-	      </excludes>
-	    </resource>
-	  </resources>
-	  <plugins>
-	    <plugin>
-	      <artifactId>maven-compiler-plugin</artifactId>
-	      <version>3.8.0</version>
-	      <configuration>
-	        <source>1.8</source>
-	        <target>1.8</target>
-	      </configuration>
-	    </plugin>
-	  </plugins>
+	
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		
+	<!--  Plugins START HERE  -->
+		<plugins>
+		
+			<!--  More Information : https://maven.apache.org/plugins/maven-compiler-plugin/ -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			
+			<!--  More Information : https://maven.apache.org/plugins/maven-jar-plugin/
+			Also you can see the differences of this and the above plugin
+			here : https://stackoverflow.com/questions/25351750/what-are-the-differences-between-maven-jar-plugin-and-maven-assembly-plugin-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<archive>
+						<!-- it define some entries about your artifact -->
+						<manifestEntries>
+							<Build-Maven>Maven ${maven.version}</Build-Maven>
+							<Build-Java>${java.version}</Build-Java>
+							<Build-OS>${os.name}</Build-OS>
+							<Build-Label>${project.version}</Build-Label>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+			
+			<!-- More Information : https://maven.apache.org/plugins/maven-dependency-plugin/
+			Only needed to the cluster to download the dependencies to a specific path so it 
+			can find the jars needed to run. Dependencies are downloaded near the jar file.
+			Default : [project_folder]/target/dependency-jars/ -->
+			<!--
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.5.1</version>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>
+								${project.build.directory}/dependency-jars/
+							</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			 -->
+		</plugins>
+	<!--  Plugins END HERE  -->
+	
 	</build>
+	
+<!-- Dependencies START HERE -->
 	<dependencies>
+	
+		<!-- For updates check : https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- For updates check : https://mvnrepository.com/artifact/org.apache.spark/spark-core -->
 		<dependency>
 			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-core_2.11</artifactId>
 			<version>2.4.3</version>
+			<scope>provided</scope>
 		</dependency>
+		
+		<!-- For updates check : https://mvnrepository.com/artifact/org.apache.spark/spark-sql -->
 		<dependency>
 			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-sql_2.11</artifactId>
 			<version>2.4.3</version>
+			<scope>provided</scope>
 		</dependency>
+		
+		<!-- For updates check : https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-hdfs -->
 		<dependency>
 			<groupId>org.apache.hadoop</groupId>
 			<artifactId>hadoop-hdfs</artifactId>
 			<version>3.2.0</version>
 		</dependency>
+		
+		<!-- For updates check : https://mvnrepository.com/artifact/org.antlr/antlr-runtime -->
 		<dependency>
-		    <groupId>org.antlr</groupId>
-		    <artifactId>antlr</artifactId>
-		    <version>3.5.2</version>
+			<groupId>org.antlr</groupId>
+			<artifactId>antlr</artifactId>
+			<version>3.5.2</version>
+			<scope>compile</scope>
 		</dependency>
+		
+		<!-- For updates check : https://mvnrepository.com/artifact/commons-io/commons-io -->
 		<dependency>
-		    <groupId>commons-io</groupId>
-		    <artifactId>commons-io</artifactId>
-		    <version>2.6</version>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.6</version>
 		</dependency>
+		
+		<!-- For updates check : https://mvnrepository.com/artifact/org.apache.commons/commons-math3 -->
 		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-math3</artifactId>
-		    <version>3.6.1</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-math3</artifactId>
+			<version>3.6.1</version>
 		</dependency>
+		
+		<!-- For updates check : https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.48</version>
+			<scope>compile</scope>
 		</dependency>
+		
+		<!-- For updates check : https://mvnrepository.com/artifact/com.jfoenix/jfoenix -->
 		<dependency>
-		    <groupId>com.jfoenix</groupId>
-		    <artifactId>jfoenix</artifactId>
-		    <version>8.0.8</version>
+			<groupId>com.jfoenix</groupId>
+			<artifactId>jfoenix</artifactId>
+			<version>8.0.8</version>
 		</dependency>
+		
 	</dependencies>
+<!-- Dependencies END HERE -->
+	
 </project>
