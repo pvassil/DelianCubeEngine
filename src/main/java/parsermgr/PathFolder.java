@@ -13,7 +13,7 @@ public class PathFolder {
 	}
 	
 	public static String getPathOfProject() {
-		File file = new File("src/main/resources/project_path.ini"); 
+		File file = new File("project_path.ini"); 
 		
 		BufferedReader br;
 		try {
