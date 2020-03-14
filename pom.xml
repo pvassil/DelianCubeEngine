@@ -44,6 +44,15 @@
 				<version>2.6</version>
 				<configuration>
 					<archive>
+						<manifest>
+						<!-- # This is to compile the jar with the dependencies jars -->
+						<!-- It define the classpath dependencies -->
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>dependency-jars/</classpathPrefix>
+							<!-- it makes the jar executable -->
+							<mainClass>com.DelianCubeEngine</mainClass>
+			            </manifest>
+			            <!-- # Here it ends. This is needed for the Linux OS -->
 						<!-- it define some entries about your artifact -->
 						<manifestEntries>
 							<Build-Maven>Maven ${maven.version}</Build-Maven>
@@ -154,6 +163,13 @@
 			<groupId>com.jfoenix</groupId>
 			<artifactId>jfoenix</artifactId>
 			<version>8.0.8</version>
+		</dependency>
+		
+		<!-- For updates check : https://mvnrepository.com/artifact/commons-lang/commons-lang -->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
 		</dependency>
 		
 	</dependencies>

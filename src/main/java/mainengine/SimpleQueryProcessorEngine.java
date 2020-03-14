@@ -177,11 +177,11 @@ public class SimpleQueryProcessorEngine extends UnicastRemoteObject implements I
 		//Use a hashmap to get any useful data (like queryname) from the raw query string
 		HashMap<String, String> queryParams = new HashMap<String, String>();
 		
-		Instant t0 = Instant.now();
 		//1. parse query and produce a CubeQuery
 		CubeQuery currentCubQuery = cubeManager.createCubeQueryFromString(queryRawString, queryParams);
 		this.currentCubeQuery = currentCubQuery;
 		
+		Instant t0 = Instant.now();
 		//2. execute the query AND populate Result with a 2D string
 		//Result res = cubeManager.getCubeBase().executeQuery(currentCubQuery);
 		Result res = cubeManager.executeQuery(currentCubQuery);
@@ -201,7 +201,7 @@ public class SimpleQueryProcessorEngine extends UnicastRemoteObject implements I
 		
 				
 		//3b. print result to file
-		String outputLocation = this.printToTabTextFile(currentCubQuery,  "OutputFiles" + File.separator);
+		String outputLocation = this.printToTabTextFile(currentCubQuery, "OutputFiles" + File.separator);
 		//TODO SUPER MUST: devise a nice way to handle the output to console when in development mode
 		if ((ModeOfWork.mode == WorkMode.DEBUG_GLOBAL)||(ModeOfWork.mode == WorkMode.DEBUG_QUERY)) {
 			res.printCellsToStream(System.out);

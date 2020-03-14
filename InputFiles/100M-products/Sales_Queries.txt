@@ -1,6 +1,0 @@
-CubeName:sales
-Name:CubeQuerySales
-AggrFunc:Avg
-Measure:sales
-Gamma:products_dim.lvl0,locations_dim.lvl0
-Sigma:dates_dim.lvl3='2'

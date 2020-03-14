@@ -173,7 +173,7 @@ public class MainAppController extends AbstractController implements Initializab
 				String localName = "NoName";
 				if (array.length > 0)
 					localName = array[array.length-1].trim();
-				
+
 				localName = PathFolder.getPathOfProject() + File.separator + "ClientCache" + File.separator + localName;
 				File localFile = new File(localName);
 

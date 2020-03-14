@@ -5,22 +5,22 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema 100M-products
+-- Schema 1K-products
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `100M-products` ;
+DROP SCHEMA IF EXISTS `1K-products` ;
 
 -- -----------------------------------------------------
--- Schema 100M-products
+-- Schema 1K-products
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `100M-products` DEFAULT CHARACTER SET utf8 ;
-USE `100M-products` ;
+CREATE SCHEMA IF NOT EXISTS `1K-products` DEFAULT CHARACTER SET utf8 ;
+USE `1K-products` ;
 
 -- -----------------------------------------------------
--- Table `100M-products`.`dates`
+-- Table `1K-products`.`dates`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `100M-products`.`dates` ;
+DROP TABLE IF EXISTS `1K-products`.`dates` ;
 
-CREATE TABLE IF NOT EXISTS `100M-products`.`dates` (
+CREATE TABLE IF NOT EXISTS `1K-products`.`dates` (
   `date_id` INT NOT NULL,
   `date` DATETIME NULL,
   `day` INT NULL,
@@ -32,11 +32,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `100M-products`.`products`
+-- Table `1K-products`.`products`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `100M-products`.`products` ;
+DROP TABLE IF EXISTS `1K-products`.`products` ;
 
-CREATE TABLE IF NOT EXISTS `100M-products`.`products` (
+CREATE TABLE IF NOT EXISTS `1K-products`.`products` (
   `product_id` INT NOT NULL,
   `name` VARCHAR(45) NULL,
   `price` DECIMAL NULL,
@@ -48,11 +48,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `100M-products`.`locations`
+-- Table `1K-products`.`locations`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `100M-products`.`locations` ;
+DROP TABLE IF EXISTS `1K-products`.`locations` ;
 
-CREATE TABLE IF NOT EXISTS `100M-products`.`locations` (
+CREATE TABLE IF NOT EXISTS `1K-products`.`locations` (
   `location_id` INT NOT NULL,
   `city` VARCHAR(45) NOT NULL,
   `state` VARCHAR(45) NOT NULL,
@@ -62,18 +62,17 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `100M-products`.`sales`
+-- Table `1K-products`.`sales`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `100M-products`.`sales` ;
+DROP TABLE IF EXISTS `1K-products`.`sales` ;
 
-CREATE TABLE IF NOT EXISTS `100M-products`.`sales` (
+CREATE TABLE IF NOT EXISTS `1K-products`.`sales` (
   `sale_id` INT NOT NULL,
   `location_id` INT NOT NULL,
   `product_id` INT NOT NULL,
   `date_id` INT NOT NULL,
   `sales` DECIMAL NOT NULL,
-  PRIMARY KEY (`sale_id`),
-  UNIQUE INDEX `sale_id_UNIQUE` (`sale_id` ASC) VISIBLE)
+  PRIMARY KEY (`sale_id`))
 ENGINE = InnoDB;
 
 

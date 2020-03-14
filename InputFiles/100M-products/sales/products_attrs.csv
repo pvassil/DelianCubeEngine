@@ -1,1 +1,0 @@
-product_id,INT,name,VARCHAR,price,DECMIAL,subcategory,VARCHAR,category,VARCHAR,ALL,VARCHAR

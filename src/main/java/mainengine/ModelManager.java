@@ -7,6 +7,8 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 
+import parsermgr.PathFolder;
+
 public class ModelManager {
 
 	public ModelManager(Result res) {
@@ -70,7 +72,7 @@ public class ModelManager {
 			
 			if(modelExecution==0) {
 				//2a. output results to a file 
-				String outputFolder = "OutputFiles"+ File.separator;
+				String outputFolder = PathFolder.getPathOfProject() + File.separator + "OutputFiles"+ File.separator;
 				String resultFileName = outputFolder + namePrefix + "_" + model.getModelName() + ".tab";
 				model.printComponentsToFile(resultFileName);
 				//2b. add the file with the results to the list of file results

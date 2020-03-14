@@ -162,7 +162,7 @@ public class SparkManager {
 		
 		//		Dataset<Row> temp = queryDS.filter(row -> row.getAs("subcategory").equals("subcategory1"));
 		//		temp.show();
-
+		List<Row> queryList = queryDS.collectAsList();
 		Instant finalTime = Instant.now();
 	    queryTimeString = Duration.between(startTime, finalTime).toMillis();
 		System.out.println("\nok - Query executed! :)");
@@ -172,7 +172,7 @@ public class SparkManager {
 		System.out.println("\nPrinting the schema of the results table :\n");
 		queryDS.printSchema();
 		System.out.println("\n\nrunning - Populating results. Please wait...");
-		result = generateResult(queryDS, result);
+		result = generateResult(queryList ,queryDS, result);
 		System.out.println("\n"+ "ok - Result produced! :)"+"\n");
 		return result;
 	}
@@ -181,8 +181,7 @@ public class SparkManager {
 		return queryTimeString;
 	}
 	
-	public Result generateResult(Dataset<Row> queryDS, Result result) {
-		List<Row> queryList = queryDS.collectAsList();
+	public Result generateResult(List<Row> queryList, Dataset<Row> queryDS, Result result) {
 		int columnCount = queryDS.columns().length;
 		int rowCount = queryDS.collectAsList().size();
 		boolean ret_value=false;

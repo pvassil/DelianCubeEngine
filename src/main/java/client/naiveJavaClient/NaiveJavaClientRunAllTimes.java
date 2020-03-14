@@ -86,7 +86,7 @@ public class NaiveJavaClientRunAllTimes {
 		System.out.println("Completed connection initialization");
 
 		//CleanUp client Cache
-		File resultFolder = new File("ClientCache");
+		File resultFolder = new File(PathFolder.getPathOfProject() + File.separator + "ClientCache");
 		deleteAllFilesOfFolder(resultFolder);
 		
 		//Run queries
@@ -110,7 +110,7 @@ public class NaiveJavaClientRunAllTimes {
 			String localName = "NoName";
 			if (array.length > 0)
 				localName = array[array.length-1].trim();
-
+			
 			ClientRMITransferer.download(service, remote, new File(PathFolder.getPathOfProject() + File.separator + "ClientCache" + File.separator + localName));
 			
 		}
