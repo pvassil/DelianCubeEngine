@@ -1,8 +1,15 @@
 /ClientCache/
 /OutputFiles/
 /target/
-/InputFiles/1K-products/Data
-/InputFiles/10K-products/Data
-/InputFiles/100K-products/Data
-/InputFiles/1M-products/Data
-/InputFiles/10M-products/Data
+/InputFiles/1K-products/Data/
+/InputFiles/10K-products/Data/
+/InputFiles/100K-products/Data/
+/InputFiles/1M-products/Data/
+/InputFiles/10M-products/Data/
+
+# exception to the rule
+!/InputFiles/1K-products/Data/.gitkeep
+!/InputFiles/10K-products/Data/.gitkeep
+!/InputFiles/100K-products/Data/.gitkeep
+!/InputFiles/1M-products/Data/.gitkeep
+!/InputFiles/10M-products/Data/.gitkeep
