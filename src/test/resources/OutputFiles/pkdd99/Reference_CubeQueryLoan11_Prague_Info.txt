@@ -1,0 +1,7 @@
+QueryName: CubeQueryLoan11_Prague
+BasicCube : loan_cube
+Aggregate Function : Sum
+Measure : amount
+Gamma Expression: account_dim.lvl1 , date_dim.lvl2
+Sigma Expression: account_dim.lvl2='Prague'
+

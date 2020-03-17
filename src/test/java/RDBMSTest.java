@@ -93,25 +93,25 @@ public class RDBMSTest {
 		/**
 		 * Try some easy small queries first
 		 */
-		File f = new File("src/test/InputFiles/pkdd99/_cubeQueriesloan.ini");
+		File f = new File("src/test/resources/InputFiles/pkdd99/_cubeQueriesloan.ini");
 		//System.out.println(f.getPath() + "\n"+ f.getAbsolutePath());
 		testedQPEngine.answerCubeQueriesFromFile(f);/**/
 		
 		
 		File fileProduced01 = new File("OutputFiles/CubeQueryLoan1.tab");
-		File fileReference01 = new File("src/test/OutputFiles/pkdd99/Reference_CubeQueryLoan1.tab");
+		File fileReference01 = new File("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan1.tab");
         comparison01 = FileUtils.contentEquals(fileProduced01, fileReference01);
 		
 //        System.out.println("\n PRODUCED: "+ fileProduced1.getAbsolutePath());
 //        System.out.println("\n REFERENCE: "+ fileReference1.getAbsolutePath());
         
 		File fileProduced02 = new File("OutputFiles/CubeQueryLoan2.tab");
-		File fileReference02 = new File("src/test/OutputFiles/pkdd99/Reference_CubeQueryLoan2.tab");
+		File fileReference02 = new File("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan2.tab");
         comparison02 = FileUtils.contentEquals(fileProduced02, fileReference02);
 
 		
 		File fileProduced03 = new File("OutputFiles/CubeQueryLoan3.tab");
-		File fileReference03 = new File("src/test/OutputFiles/pkdd99/Reference_CubeQueryLoan3.tab");
+		File fileReference03 = new File("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan3.tab");
         comparison03 = FileUtils.contentEquals(fileProduced03, fileReference03);
         assertEquals((comparison01 && comparison02 && comparison03), true);
 
@@ -121,11 +121,11 @@ public class RDBMSTest {
          * S<k>: k stands for how many atoms the sigma selection condition has
          * CG-<xxx>: whether the group-by dimensions and the sigma dimensions have a partial coverage, are common, or are disjoint  
          */
-        File inputFile = new File("src/test/InputFiles/pkdd99/_loanQueriesPrincipled.txt");
+        File inputFile = new File("src/test/resources/InputFiles/pkdd99/_loanQueriesPrincipled.txt");
         testedQPEngine.answerCubeQueriesFromFile(inputFile);
 
 		File fileProduced11 = new File("OutputFiles/LoanQuery11_S1_CG-Prtl.tab");
-		File fileReference11 = new File("src/test/OutputFiles/pkdd99/Reference_LoanQuery11_S1_CG-Prtl.tsv");
+		File fileReference11 = new File("src/test/resources/OutputFiles/pkdd99/Reference_LoanQuery11_S1_CG-Prtl.tsv");
         boolean comparison11 = FileUtils.contentEquals(fileProduced11, fileReference11);
         assertEquals(comparison11, true);
         //Can fail because at lines 16, 17, the two districts have exactly the same aggr. measure
@@ -133,22 +133,22 @@ public class RDBMSTest {
         //diff OutputFiles/LoanQuery11_S1_CG-Prtl.tab src/test/OutputFiles/pkdd99/Reference_LoanQuery11_S1_CG-Prtl.tsv
         
         File fileProduced12 = new File("OutputFiles/LoanQuery12_S1_CG-Dsjnt.tab");
-		File fileReference12 = new File("src/test/OutputFiles/pkdd99/Reference_LoanQuery12_S1_CG-Dsjnt.tsv");
+		File fileReference12 = new File("src/test/resources/OutputFiles/pkdd99/Reference_LoanQuery12_S1_CG-Dsjnt.tsv");
 		boolean comparison12 = FileUtils.contentEquals(fileProduced12, fileReference12);
         assertEquals(comparison12, true);
         
 		File fileProduced21 = new File("OutputFiles/LoanQuery21_S2_CG-Cmmn.tab");
-		File fileReference21 = new File("src/test/OutputFiles/pkdd99/Reference_LoanQuery21_S2_CG-Cmmn.tsv");
+		File fileReference21 = new File("src/test/resources/OutputFiles/pkdd99/Reference_LoanQuery21_S2_CG-Cmmn.tsv");
 		boolean comparison21 = FileUtils.contentEquals(fileProduced21, fileReference21);
         assertEquals(comparison21, true);
         
 		File fileProduced22 = new File("OutputFiles/LoanQuery22_S2_CG-Prtl.tab");
-		File fileReference22 = new File("src/test/OutputFiles/pkdd99/Reference_LoanQuery22_S2_CG-Prtl.tsv");
+		File fileReference22 = new File("src/test/resources/OutputFiles/pkdd99/Reference_LoanQuery22_S2_CG-Prtl.tsv");
 		boolean comparison22 = FileUtils.contentEquals(fileProduced22, fileReference22);
         assertEquals(comparison22, true);
         
 		File fileProduced31 = new File("OutputFiles/LoanQuery31_S3_CG-Prtl.tab");
-		File fileReference31 = new File("src/test/OutputFiles/pkdd99/Reference_LoanQuery31_S3_CG-Prtl.tsv");
+		File fileReference31 = new File("src/test/resources/OutputFiles/pkdd99/Reference_LoanQuery31_S3_CG-Prtl.tsv");
 		boolean comparison31 = FileUtils.contentEquals(fileProduced31, fileReference31);
         assertEquals(comparison31, true);
 		
@@ -174,7 +174,7 @@ public class RDBMSTest {
 						"Sigma:account_dim.lvl1='Liberec'";
 		testedQPEngine.answerCubeQueryFromString(testQueryString1);   /**/
 		File fileProduced1 = new File("OutputFiles/CubeQueryLoan1_FailTheTest.tab");
-		File fileReference1 = new File("src/test/OutputFiles/pkdd99/Reference_CubeQueryLoan1.tab");
+		File fileReference1 = new File("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan1.tab");
         boolean comparison1 = FileUtils.contentEquals(fileProduced1, fileReference1);
 		
         assertEquals(comparison1 , false);				
@@ -192,7 +192,7 @@ public class RDBMSTest {
 		
 
 		File fileProduced2 = new File("OutputFiles/CubeQueryLoan2_Copy.tab");
-		File fileReference2 = new File("src/test/OutputFiles/pkdd99/Reference_CubeQueryLoan2.tab");
+		File fileReference2 = new File("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan2.tab");
         boolean comparison2 = FileUtils.contentEquals(fileProduced2, fileReference2);
 		
         assertEquals(comparison2 , true);/**/
@@ -218,7 +218,7 @@ public class RDBMSTest {
 		
 		
 		File fileInfoProduced2 = new File("OutputFiles/CubeQueryLoan22_Copy_Info.txt");
-		File fileInfoReference2 = new File("src/test/OutputFiles/pkdd99/Reference_CubeQueryLoan22_Info.txt");
+		File fileInfoReference2 = new File("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan22_Info.txt");
         boolean comparison2 = FileUtils.contentEquals(fileInfoProduced2, fileInfoReference2);
         assertEquals(comparison2 , true);/**/
 	}//end method testanswerCubeQueryFromStringWithMetadata
@@ -241,12 +241,16 @@ public class RDBMSTest {
 		testedQPEngine.answerCubeQueryFromStringWithModels(queryForModels11, modelsToGenerate11);
 		
 		File fileProduced_11_1 = new File("OutputFiles/CubeQueryLoan11_Prague.tab");
-		File fileReference_11_1 = new File("src/test/OutputFiles/pkdd99/Reference_CubeQueryLoan11_Prague.tab");
+		File fileReference_11_1 = new File("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan11_Prague.tab");
         boolean comparison_11_1 = FileUtils.contentEquals(fileProduced_11_1, fileReference_11_1);
         assertEquals(comparison_11_1 , true);
 
         File fileProduced_11_2 = new File("OutputFiles/CubeQueryLoan11_Prague_Info.txt");
-		File fileReference_11_2 = new File("src/test/OutputFiles/pkdd99/Reference_CubeQueryLoan11_Prague_Info.txt");
+		File fileReference_11_2 = new File("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan11_Prague_Info.txt");
+		System.out.println(" -->- " + fileProduced_11_2.getAbsolutePath());
+		System.out.println(" -->- " + fileReference_11_2.getAbsolutePath());
+		System.out.println(fileProduced_11_2.canRead());
+		System.out.println(fileReference_11_2.canRead());
         boolean comparison_11_2 = FileUtils.contentEquals(fileProduced_11_2, fileReference_11_2);
         assertEquals(comparison_11_2 , true);
 
@@ -256,7 +260,7 @@ public class RDBMSTest {
 //        assertEquals(comparison_11_31 , true);
         
         File fileProduced_11_32 = new File("OutputFiles/CubeQueryLoan11_Prague_Z-Score_Outliers.tab");
-		File fileReference_11_32 = new File("src/test/OutputFiles/pkdd99/Reference_CubeQueryLoan11_Prague_Z-Score_Outliers.tab");
+		File fileReference_11_32 = new File("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan11_Prague_Z-Score_Outliers.tab");
         boolean comparison_11_32 = FileUtils.contentEquals(fileProduced_11_32, fileReference_11_32);
         assertEquals(comparison_11_32 , true);
         
@@ -272,22 +276,22 @@ public class RDBMSTest {
 		testedQPEngine.answerCubeQueryFromStringWithModels(queryForModels12, modelsToGenerate12);
 
 		File fileProduced_12_1 = new File("OutputFiles/CubeQueryLoan12_Sum1998.tab");
-		File fileReference_12_1 = new File("src/test/OutputFiles/pkdd99/Reference_CubeQueryLoan12_Sum1998.tab");
+		File fileReference_12_1 = new File("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan12_Sum1998.tab");
         boolean comparison_12_1 = FileUtils.contentEquals(fileProduced_12_1, fileReference_12_1);
         assertEquals(comparison_12_1 , true);
 
         File fileProduced_12_2 = new File("OutputFiles/CubeQueryLoan12_Sum1998_Info.txt");
-		File fileReference_12_2 = new File("src/test/OutputFiles/pkdd99/Reference_CubeQueryLoan12_Sum1998_Info.txt");
+		File fileReference_12_2 = new File("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan12_Sum1998_Info.txt");
         boolean comparison_12_2 = FileUtils.contentEquals(fileProduced_12_2, fileReference_12_2);
         assertEquals(comparison_12_2 , true);
 
         File fileProduced_12_31 = new File("OutputFiles/CubeQueryLoan12_Sum1998_Ranks.tab");
-		File fileReference_12_31 = new File("src/test/OutputFiles/pkdd99/Reference_CubeQueryLoan12_Sum1998_Ranks.tab");
+		File fileReference_12_31 = new File("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan12_Sum1998_Ranks.tab");
         boolean comparison_12_31 = FileUtils.contentEquals(fileProduced_12_31, fileReference_12_31);
         assertEquals(comparison_12_31, true);
         
         File fileProduced_12_32 = new File("OutputFiles/CubeQueryLoan12_Sum1998_Z-Score_Outliers.tab");
-		File fileReference_12_32 = new File("src/test/OutputFiles/pkdd99/Reference_CubeQueryLoan12_Sum1998_Z-Score_Outliers.tab");
+		File fileReference_12_32 = new File("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan12_Sum1998_Z-Score_Outliers.tab");
         boolean comparison_12_32 = FileUtils.contentEquals(fileProduced_12_32, fileReference_12_32);
         assertEquals(comparison_12_32 , true);
 
@@ -301,7 +305,7 @@ public class RDBMSTest {
 //        //The produced clustering might change the order and assign the (single) last value to Cluster 3 instead and the rest to Cluster 2
         
         File fileProduced_12_34 = new File("OutputFiles/CubeQueryLoan12_Sum1998_KPIMedianBasedModel.tab");
-		File fileReference_12_34 = new File("src/test/OutputFiles/pkdd99/Reference_CubeQueryLoan12_Sum1998_KPIMedianBasedModel.tab");
+		File fileReference_12_34 = new File("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan12_Sum1998_KPIMedianBasedModel.tab");
         boolean comparison_12_34 = FileUtils.contentEquals(fileProduced_12_34, fileReference_12_34);
         assertEquals(comparison_12_34 , true);
         
@@ -316,22 +320,22 @@ public class RDBMSTest {
 
 		testedQPEngine.answerCubeQueryFromStringWithModels(queryForModels12_2, modelsToGenerate12_2);
 		File fileProduced_12_1_2 = new File("OutputFiles/CubeQueryLoan12_Sum1998_2.tab");
-		File fileReference_12_1_2 = new File("src/test/OutputFiles/pkdd99/Reference_CubeQueryLoan12_Sum1998_2.tab");
+		File fileReference_12_1_2 = new File("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan12_Sum1998_2.tab");
         boolean comparison_12_1_2 = FileUtils.contentEquals(fileProduced_12_1_2, fileReference_12_1_2);
         assertEquals(comparison_12_1_2 , true);
 
         File fileProduced_12_2_2 = new File("OutputFiles/CubeQueryLoan12_Sum1998_2_Info.txt");
-		File fileReference_12_2_2 = new File("src/test/OutputFiles/pkdd99/Reference_CubeQueryLoan12_Sum1998_2_Info.txt");
+		File fileReference_12_2_2 = new File("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan12_Sum1998_2_Info.txt");
         boolean comparison_12_2_2 = FileUtils.contentEquals(fileProduced_12_2_2, fileReference_12_2_2);
         assertEquals(comparison_12_2_2 , true);
 
         File fileProduced_12_2_31 = new File("OutputFiles/CubeQueryLoan12_Sum1998_2_Ranks.tab");
-		File fileReference_12_2_31 = new File("src/test/OutputFiles/pkdd99/Reference_CubeQueryLoan12_Sum1998_2_Ranks.tab");
+		File fileReference_12_2_31 = new File("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan12_Sum1998_2_Ranks.tab");
         boolean comparison_12_2_31 = FileUtils.contentEquals(fileProduced_12_2_31, fileReference_12_2_31);
         assertEquals(comparison_12_2_31 , true);
         
         File fileProduced_12_2_32 = new File("OutputFiles/CubeQueryLoan12_Sum1998_2_Z-Score_Outliers.tab");
-		File fileReference_12_2_32 = new File("src/test/OutputFiles/pkdd99/Reference_CubeQueryLoan12_Sum1998_2_Z-Score_Outliers.tab");
+		File fileReference_12_2_32 = new File("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan12_Sum1998_2_Z-Score_Outliers.tab");
         boolean comparison_12_2_32 = FileUtils.contentEquals(fileProduced_12_2_32, fileReference_12_2_32);
         assertEquals(comparison_12_2_32 , true);
 	}//end testanswerCubeQueryFromStringWithModels

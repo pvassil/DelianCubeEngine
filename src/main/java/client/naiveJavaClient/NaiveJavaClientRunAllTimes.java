@@ -117,7 +117,7 @@ public class NaiveJavaClientRunAllTimes {
 		
 		/* ******************* now for the models **************/
 		
-		if (userInputList.get("runModels").equals("YES")) {
+		if (userInputList.get("runModels").equals("YES") || userInputList.get("runModels").equals("Yes") || userInputList.get("runModels").equals("yes")) {
 			String queryForModels11 = "CubeName:sales\n" + 
 					"Name:CubeQuerySales\n" + 
 					"AggrFunc:Avg\n" + 

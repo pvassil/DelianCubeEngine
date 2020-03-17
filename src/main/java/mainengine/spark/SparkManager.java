@@ -26,6 +26,8 @@ import org.roaringbitmap.WordStorage;
 import parsermgr.PathFolder;
 import result.Cell;
 import result.Result;
+import scala.Tuple2;
+import scala.collection.Seq;
 
 /**
  * The main class which runs the Spark master.<br>
@@ -70,7 +72,7 @@ public class SparkManager {
 					.config("spark.sql.warehouse.dir", sparkIni.get(2).toString())
 					.getOrCreate();
 		}
-		
+
 		createDataSets();
 	}
 	
@@ -167,8 +169,8 @@ public class SparkManager {
 	    queryTimeString = Duration.between(startTime, finalTime).toMillis();
 		System.out.println("\nok - Query executed! :)");
 		
-		System.out.println("\nShowing the 20 first results of the query : ");
-		queryDS.show();
+//		System.out.println("\nShowing the 20 first results of the query : ");
+//		queryDS.show();
 		System.out.println("\nPrinting the schema of the results table :\n");
 		queryDS.printSchema();
 		System.out.println("\n\nrunning - Populating results. Please wait...");
@@ -183,7 +185,7 @@ public class SparkManager {
 	
 	public Result generateResult(List<Row> queryList, Dataset<Row> queryDS, Result result) {
 		int columnCount = queryDS.columns().length;
-		int rowCount = queryDS.collectAsList().size();
+		int rowCount = queryList.size();
 		boolean ret_value=false;
 		String resultArray [][] = new String[rowCount+2][columnCount];
 

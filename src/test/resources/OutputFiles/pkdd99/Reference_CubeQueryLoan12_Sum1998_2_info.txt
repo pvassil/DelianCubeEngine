@@ -1,0 +1,7 @@
+QueryName: CubeQueryLoan12_Sum1998_2
+BasicCube : loan_cube
+Aggregate Function : Sum
+Measure : amount
+Gamma Expression: account_dim.lvl1 , status_dim.lvl1
+Sigma Expression: date_dim.lvl2 = '1998-02'
+

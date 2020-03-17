@@ -201,7 +201,7 @@ public class SimpleQueryProcessorEngine extends UnicastRemoteObject implements I
 		
 				
 		//3b. print result to file
-		String outputLocation = this.printToTabTextFile(currentCubQuery, "OutputFiles" + File.separator);
+		String outputLocation = this.printToTabTextFile(currentCubQuery, PathFolder.getPathOfProject() + File.separator + "OutputFiles" + File.separator);
 		//TODO SUPER MUST: devise a nice way to handle the output to console when in development mode
 		if ((ModeOfWork.mode == WorkMode.DEBUG_GLOBAL)||(ModeOfWork.mode == WorkMode.DEBUG_QUERY)) {
 			res.printCellsToStream(System.out);
@@ -243,31 +243,35 @@ public class SimpleQueryProcessorEngine extends UnicastRemoteObject implements I
 	    	System.out.print("-");
 	    }
 	    System.out.println("+");
-	    try {
-	        File myObj = new File(PathFolder.getPathOfProject() + File.separator + "OutputFiles" + File.separator + "script_times" + File.separator
-	        		+ userInputList.get("round") + "_" + userInputList.get("connectionType") + "_" + userInputList.get("schemaName") + ".txt");
-	        if (myObj.createNewFile()) {
-	          System.out.println("File created: " + myObj.getName());
-	          try {
-	              FileWriter myWriter = new FileWriter(myObj);
-	              myWriter.write("model,total_result,query_time,result_time,execution_time,output_time,total_time\n");
-	              myWriter.close();
-	              System.out.println("Successfully wrote to the file.");
-	            } catch (IOException e) {
-	              System.out.println("An error occurred.");
-	              e.printStackTrace();
-	            }
-	        }
-	        try {
-	            Files.write(Paths.get(myObj.toString()), (queryName + "," + res.getCells().size() + "," + queryTimeString + "," + resultTime + "," + durationExecution + "," + durationExecToOutput + "," + durationExecTotal + "\n").getBytes(), StandardOpenOption.APPEND);
-	        }catch (IOException e) {
-	            //exception handling left as an exercise for the reader
-	        }
-
-	    } catch (IOException e) {
-	    	System.out.println("An error occurred.");
-	    	e.printStackTrace();
-	    }
+	    
+	    // Export Data To File. Used to check MySQL and Spark result times
+//	    try {
+//	        File myObj = new File(PathFolder.getPathOfProject() + File.separator + "OutputFiles" + File.separator + "script_times" + File.separator
+//	        		+ userInputList.get("round") + "_" + userInputList.get("connectionType") + "_" + userInputList.get("schemaName") + ".txt");
+//	        if (myObj.createNewFile()) {
+//	          System.out.println("File created: " + myObj.getName());
+//	          try {
+//	              FileWriter myWriter = new FileWriter(myObj);
+//	              myWriter.write("model,total_result,query_time,result_time,execution_time,output_time,total_time\n");
+//	              myWriter.close();
+//	              System.out.println("Successfully wrote to the file.");
+//	            } catch (IOException e) {
+//	              System.out.println("An error occurred.");
+//	              e.printStackTrace();
+//	            }
+//	        }
+//	        try {
+//	            Files.write(Paths.get(myObj.toString()), (queryName + "," + res.getCells().size() + "," + queryTimeString + "," + resultTime + "," + durationExecution + "," + durationExecToOutput + "," + durationExecTotal + "\n").getBytes(), StandardOpenOption.APPEND);
+//	        }catch (IOException e) {
+//	            //exception handling left as an exercise for the reader
+//	        }
+//
+//	    } catch (IOException e) {
+//	    	System.out.println("An error occurred.");
+//	    	e.printStackTrace();
+//	    }
+	    // End Data Export Here
+	    
 	    // Print Ends here
 		return outputLocation;
 	}//answerCubeQueryFromString
