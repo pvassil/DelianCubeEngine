@@ -1,0 +1,11 @@
+model,total_result,query_time,result_time,execution_time,output_time,total_time
+CubeQuerySales,929,6260,48,6308,62,6370
+CubeQuerySales,929,5352,40,5392,67,5459
+CubeQuerySales,929,6151,40,6191,43,6234
+CubeQuerySales,929,6330,41,6371,45,6416
+CubeQuerySales,929,5930,50,5980,55,6035
+CubeQuerySales,929,5331,39,5370,45,5415
+CubeQuerySales,929,6272,38,6310,59,6369
+CubeQuerySales,929,5444,37,5481,44,5525
+CubeQuerySales,929,4593,42,4635,139,4774
+CubeQuerySales,929,4856,39,4895,53,4948
