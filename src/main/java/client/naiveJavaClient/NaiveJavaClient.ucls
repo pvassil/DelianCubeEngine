@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="client.naiveJavaClient.NaiveJavaClient" project="DelianCubeEngine" 
-    file="/DelianCubeEngine/src/client/naiveJavaClient/NaiveJavaClient.java" binary="false" corner="BOTTOM_RIGHT">    
+    file="/DelianCubeEngine/src/main/java/client/naiveJavaClient/NaiveJavaClient.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="350" y="94"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -11,8 +12,8 @@
     </display>  
   </class>  
   <interface id="2" language="java" name="mainengine.IMainEngine" project="DelianCubeEngine" 
-    file="/DelianCubeEngine/src/mainengine/IMainEngine.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="481" y="250"/>    
+    file="/DelianCubeEngine/src/main/java/mainengine/IMainEngine.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="542" y="350"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -20,7 +21,7 @@
     </display>  
   </interface>  
   <class id="3" language="java" name="client.ClientRMITransferer" project="DelianCubeEngine" 
-    file="/DelianCubeEngine/src/client/ClientRMITransferer.java" binary="false" corner="BOTTOM_RIGHT">    
+    file="/DelianCubeEngine/src/main/java/client/ClientRMITransferer.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="173" y="355"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -30,11 +31,11 @@
   </class>  
   <dependency id="4">    
     <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="2"/>  
+    <end type="TARGET" refId="3"/>  
   </dependency>  
   <dependency id="5">    
     <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="3"/>  
+    <end type="TARGET" refId="2"/>  
   </dependency>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    

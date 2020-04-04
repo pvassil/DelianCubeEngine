@@ -1,1 +1,1 @@
-1K-products,1K-products,sales,root,password
+10K-products,10K-products,sales,root,password

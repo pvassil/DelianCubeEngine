@@ -1,0 +1,6 @@
+Z-Score_Outliers
+-------------------------
+
+We run a simple outlier detection. We compute the zScore of each measure value, and assign to (a) the outlier class, if the absolute zscore is above 2.2 or (b) non-outlier, otherwise
+Each column of the result pertains to another class of the result set, with each row referring to the respective cell of the query result
+

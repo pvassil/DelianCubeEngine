@@ -29,6 +29,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -173,8 +174,9 @@ public class MainAppController extends AbstractController implements Initializab
 				String localName = "NoName";
 				if (array.length > 0)
 					localName = array[array.length-1].trim();
-
-				localName = PathFolder.getPathOfProject() + File.separator + "ClientCache" + File.separator + localName;
+				String[] splitLocalName= localName.split("\\\\");
+				String getFileName = splitLocalName[splitLocalName.length-1];
+				localName = PathFolder.getPathOfProject() + File.separator + "ClientCache" + File.separator + "OutputFiles" + File.separator + getFileName;
 				File localFile = new File(localName);
 
 				try {

@@ -1,0 +1,7 @@
+QueryName: CubeQuerySales
+BasicCube : sales_cube
+Aggregate Function : Avg
+Measure : sales
+Gamma Expression: products_dim.lvl0 , locations_dim.lvl0
+Sigma Expression: dates_dim.lvl3='2'
+

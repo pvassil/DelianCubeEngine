@@ -247,7 +247,7 @@ public class SimpleQueryProcessorEngine extends UnicastRemoteObject implements I
 	    // Export Data To File. Used to check MySQL and Spark result times
 //	    try {
 //	        File myObj = new File(PathFolder.getPathOfProject() + File.separator + "OutputFiles" + File.separator + "script_times" + File.separator
-//	        		+ userInputList.get("round") + "_" + userInputList.get("connectionType") + "_" + userInputList.get("schemaName") + ".txt");
+//	        		+ userInputList.get("round") + "_" + userInputList.get("connectionType") + "_" + userInputList.get("schemaName") + ".csv");
 //	        if (myObj.createNewFile()) {
 //	          System.out.println("File created: " + myObj.getName());
 //	          try {

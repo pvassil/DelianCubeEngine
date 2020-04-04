@@ -1,0 +1,7 @@
+KMeansApache
+-------------------------
+
+We run K-Means provided by Apache Commons Math for the results of the query.
+We have created 3 clusters for 882 cells.
+Each column of the result pertains to another cluster of the result set, with each row referring to the respective cell of the query result
+

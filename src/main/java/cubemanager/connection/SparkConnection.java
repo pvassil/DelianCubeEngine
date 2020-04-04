@@ -1,13 +1,13 @@
 package cubemanager.connection;
 
 import java.io.File;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.apache.commons.io.FilenameUtils;
 
 import cubemanager.starschema.Table;
-import mainengine.spark.SparkManager;
 import parsermgr.PathFolder;
 import result.Result;
 
@@ -38,7 +38,15 @@ public class SparkConnection extends Connection {
 		String path = PathFolder.getPathOfProject() + File.separator + "InputFiles" + File.separator + inputFolder + File.separator + cubeName;
 		File folder = new File(path);
 		File[] listOfFiles = folder.listFiles();
+		
+		if (!folder.exists()) {
+			System.err.println("Error : The inputFolder = \"" + inputFolder + "\" doesn't exist. Please check if inputFolder is set correct.");
+		} else if (listOfFiles.length == 0) {
+			System.err.println("Error : The inputFolder = \"" + inputFolder + "\" is empty. Please check if inputFolder is set correct.");
+		}
+		
 		System.out.println("The path for the csv files is : " + path);
+		
 		for (int i = 0; i < listOfFiles.length; i++) {
 		  if (listOfFiles[i].isFile()) {
 		    System.out.println("\nReading file : " + FilenameUtils.removeExtension(listOfFiles[i].getName()));

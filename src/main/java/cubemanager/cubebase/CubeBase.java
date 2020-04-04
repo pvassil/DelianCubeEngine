@@ -28,7 +28,6 @@ import java.util.List;
 
 import cubemanager.connection.Connection;
 import cubemanager.connection.ConnectionFactory;
-import cubemanager.starschema.Database;
 import cubemanager.starschema.DimensionTable;
 import cubemanager.starschema.FactTable;
 import cubemanager.starschema.Table;

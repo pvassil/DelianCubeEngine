@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 import cubemanager.cubebase.BasicStoredCube;
 import cubemanager.cubebase.Dimension;
-import cubemanager.starschema.Database;
 
 /**
  * 
@@ -55,6 +54,10 @@ public class ConnectionFactory {
 		}
 		else if (typeOfConnection.equals("Spark")) {
 			return new SparkConnection();
+		}
+		else {
+			throw new IllegalArgumentException("\n\nError : You specified a wrong type of Connection.\n"
+					+ "Connection type must be set to \"RDBMS\" or \"Spark\".\n");
 		}
 		return null;
 	}

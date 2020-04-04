@@ -1,0 +1,7 @@
+KPIMedianBasedModel
+-------------------------
+
+We run a simple KPI computation. THe rules are that a cell is (a) low if the measure value is below half of the median value, (b) high if higher than 1.5 of the median, or (c) OK otherwise
+The median is: 4796.5
+Each column of the result pertains to another class of the result set, with each row referring to the respective cell of the query result
+

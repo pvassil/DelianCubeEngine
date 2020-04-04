@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.2.2" icons="true" always-add-relationships="true" generalizations="true" realizations="true" 
+<class-diagram version="1.2.4" icons="true" always-add-relationships="true" generalizations="true" realizations="true" 
   associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="client.gui.application.AbstractApplication" project="DelianCubeEngine" 
-    file="/DelianCubeEngine/src/client/gui/application/AbstractApplication.java" binary="false" corner="BOTTOM_RIGHT">    
+    file="/DelianCubeEngine/src/main/java/client/gui/application/AbstractApplication.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="261" width="256" x="92" y="-51"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -11,7 +12,7 @@
     </display>  
   </class>  
   <class id="2" language="java" name="client.gui.application.MainApp" project="DelianCubeEngine" 
-    file="/DelianCubeEngine/src/client/gui/application/MainApp.java" binary="false" corner="BOTTOM_RIGHT">    
+    file="/DelianCubeEngine/src/main/java/client/gui/application/MainApp.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="153" width="144" x="92" y="250"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -20,7 +21,8 @@
     </display>  
   </class>  
   <class id="3" language="java" name="client.gui.controllers.MainAppController" project="DelianCubeEngine" 
-    file="/DelianCubeEngine/src/client/gui/controllers/MainAppController.java" binary="false" corner="BOTTOM_RIGHT">    
+    file="/DelianCubeEngine/src/main/java/client/gui/controllers/MainAppController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="363" y="316"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -29,7 +31,8 @@
     </display>  
   </class>  
   <class id="4" language="java" name="client.gui.controllers.DataWindowController" project="DelianCubeEngine" 
-    file="/DelianCubeEngine/src/client/gui/controllers/DataWindowController.java" binary="false" corner="BOTTOM_RIGHT">    
+    file="/DelianCubeEngine/src/main/java/client/gui/controllers/DataWindowController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="135" width="486" x="263" y="892"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -38,7 +41,8 @@
     </display>  
   </class>  
   <class id="5" language="java" name="client.gui.controllers.QueryEditorController" project="DelianCubeEngine" 
-    file="/DelianCubeEngine/src/client/gui/controllers/QueryEditorController.java" binary="false" corner="BOTTOM_RIGHT">    
+    file="/DelianCubeEngine/src/main/java/client/gui/controllers/QueryEditorController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="669" y="693"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -47,7 +51,8 @@
     </display>  
   </class>  
   <class id="6" language="java" name="client.gui.controllers.RunQueryHelpController" project="DelianCubeEngine" 
-    file="/DelianCubeEngine/src/client/gui/controllers/RunQueryHelpController.java" binary="false" corner="BOTTOM_RIGHT">    
+    file="/DelianCubeEngine/src/main/java/client/gui/controllers/RunQueryHelpController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="99" width="161" x="789" y="892"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -56,7 +61,8 @@
     </display>  
   </class>  
   <class id="7" language="java" name="client.gui.controllers.TextEditorController" project="DelianCubeEngine" 
-    file="/DelianCubeEngine/src/client/gui/controllers/TextEditorController.java" binary="false" corner="BOTTOM_RIGHT">    
+    file="/DelianCubeEngine/src/main/java/client/gui/controllers/TextEditorController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="579" y="421"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -65,7 +71,8 @@
     </display>  
   </class>  
   <class id="8" language="java" name="client.gui.controllers.AbstractController" project="DelianCubeEngine" 
-    file="/DelianCubeEngine/src/client/gui/controllers/AbstractController.java" binary="false" corner="BOTTOM_RIGHT">    
+    file="/DelianCubeEngine/src/main/java/client/gui/controllers/AbstractController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="707" y="111"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -73,109 +80,181 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <generalization id="9">    
+  <interface id="9" language="java" name="mainengine.IMainEngine" project="DelianCubeEngine" 
+    file="/DelianCubeEngine/src/main/java/mainengine/IMainEngine.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="243" y="597"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="10" language="java" name="client.ClientRMITransferer" project="DelianCubeEngine" 
+    file="/DelianCubeEngine/src/main/java/client/ClientRMITransferer.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="173" y="808"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="11">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="12" name="callerController">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="13" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="14">    
+    <bendpoint x="808" y="480"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <generalization id="15">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <dependency id="16">    
+    <bendpoint x="26" y="716"/>    
+    <bendpoint x="23" y="487"/>    
+    <bendpoint x="62" y="241"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="17">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="18" name="service"/>      
+      <multiplicity id="19" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="20">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="21" name="application">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="22" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="23">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <dependency id="24">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <dependency id="25">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="26">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <generalization id="27">    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <generalization id="10">    
+  <dependency id="28">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="29">    
+    <bendpoint x="6" y="508"/>    
+    <bendpoint x="13" y="736"/>    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="30">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <generalization id="31">    
+    <bendpoint x="897" y="609"/>    
+    <bendpoint x="897" y="470"/>    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <generalization id="32">    
     <bendpoint x="452" y="825"/>    
     <bendpoint x="453" y="523"/>    
     <bendpoint x="699" y="521"/>    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="8"/>  
   </generalization>  
-  <association id="11">    
+  <association id="33">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="12" name="firstCalledController"/>      
-      <multiplicity id="13" minimum="0" maximum="1"/>    
+      <attribute id="34" name="lastCalledController">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="35" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="14">    
+  <association id="36">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="37" name="service"/>      
+      <multiplicity id="38" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="39">    
+    <bendpoint x="447" y="513"/>    
+    <bendpoint x="441" y="845"/>    
     <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <dependency id="15">    
-    <bendpoint x="435" y="478"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <association id="40">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="41" name="firstCalledController">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="42" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="43">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="44">    
+    <bendpoint x="448" y="467"/>    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="5"/>  
   </dependency>  
-  <dependency id="16">    
-    <bendpoint x="331" y="614"/>    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="4"/>  
+  <dependency id="45">    
+    <bendpoint x="241" y="246"/>    
+    <bendpoint x="242" y="331"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="9"/>  
   </dependency>  
-  <dependency id="17">    
-    <bendpoint x="46" y="694"/>    
-    <bendpoint x="49" y="488"/>    
-    <bendpoint x="62" y="241"/>    
+  <dependency id="46">    
+    <bendpoint x="470" y="596"/>    
     <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="1"/>  
+    <end type="TARGET" refId="9"/>  
   </dependency>  
-  <dependency id="18">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="7"/>  
-  </dependency>  
-  <dependency id="19">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="3"/>  
-  </dependency>  
-  <dependency id="20">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="1"/>  
-  </dependency>  
-  <generalization id="21">    
-    <bendpoint x="808" y="480"/>    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <association id="22">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="23" name="application"/>      
-      <multiplicity id="24" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="25">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <generalization id="26">    
-    <bendpoint x="897" y="609"/>    
-    <bendpoint x="897" y="470"/>    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <association id="27">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="28" name="lastCalledController"/>      
-      <multiplicity id="29" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="30">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="4"/>  
-  </dependency>  
-  <association id="31">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="32" name="callerController"/>      
-      <multiplicity id="33" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="34">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="6"/>  
-  </dependency>  
-  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
-    <attributes public="true" package="true" protected="true" private="false" static="true"/>    
-    <operations public="true" package="true" protected="true" private="false" static="true"/>  
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
   </classifier-display>  
   <association-display labels="true" multiplicity="true"/>
 </class-diagram>

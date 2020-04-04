@@ -17,7 +17,7 @@ def main():
 def products():
     with open('products.csv', 'w') as writeFile:
         writer = csv.writer(writeFile)
-        row = ["product_id", "name", "price", "subcategory", "category"]
+        row = ["product_id", "name", "price", "subcategory", "category", "ALL"]
         writer.writerow(row)
 
         for i in range (0,N):
@@ -52,7 +52,7 @@ def products():
             category = "category" + str(random.randint(1,10))
             # Export final object
             # Repeated for N times
-            row = [product_id, name, price, subcategory, category]
+            row = [product_id, name, price, subcategory, category, "ALL"]
             writer.writerow(row)
     writeFile.close()
 
@@ -91,7 +91,7 @@ def sales():
 def dates():
     with open('dates.csv', 'w') as writeFile:
         writer = csv.writer(writeFile)
-        row = ["date_id", "date", "day", "month", "year"]
+        row = ["date_id", "date", "day", "month", "year", "ALL"]
         writer.writerow(row)
 
         for i in range (0,N):
@@ -112,14 +112,14 @@ def dates():
             date = str(day) + "/" + str(month) + "/" + str(year)
             # Export final object
             # Repeated for N times
-            row = [date_id, date, day, month, year]
+            row = [date_id, date, day, month, year, "ALL"]
             writer.writerow(row)
     writeFile.close()
 
 def locations():
     with open('locations.csv', 'w') as writeFile:
         writer = csv.writer(writeFile)
-        row = ["location_id", "city", "state"]
+        row = ["location_id", "city", "state", "ALL"]
         writer.writerow(row)
 
         for i in range (0,N):
@@ -134,7 +134,7 @@ def locations():
             state = "state" + str(random.randint(0,10))
             # Export final object
             # Repeated for N times
-            row = [location_id, city, state]
+            row = [location_id, city, state, "ALL"]
 
             writer.writerow(row)
     writeFile.close()

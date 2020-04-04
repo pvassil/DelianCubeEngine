@@ -5,10 +5,13 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import org.apache.commons.lang.StringUtils;
 
 import cubemanager.starschema.ErrorClass;
 import cubemanager.starschema.Table;
@@ -174,9 +177,20 @@ public class RDBMSConnection extends Connection {
 				while(resultSet.next()){
 					String [] values = new String[resultSet.getMetaData().getColumnCount()];
 					for(int i=0;i<columnCount;i++){
-						String value = resultSet.getString(i+1);
-						resultArray[resultSet.getRow()+1][i]=value;
-						values[i] = value;
+						String value;
+						if(StringUtils.isNumeric(resultSet.getString(i+1).replace(".", ""))) {
+							if (!StringUtils.isNumeric(resultSet.getString(i+1))) {
+
+								DecimalFormat decim = new DecimalFormat("0.0000");
+								value = decim.format(Float.parseFloat(resultSet.getString(i+1)))+"";
+							} else {
+								value = resultSet.getString(i+1);
+							}
+						} else {
+							value = resultSet.getString(i+1);
+						}
+						resultArray[resultSet.getRow()+1][i]=value.toString().trim().replaceAll("\n ", "");
+						values[i] = value.toString().trim().replaceAll("\n ", "");
 					}
 					/*
 					 * VERY IMPORTANT: here is where cells are created!

@@ -115,11 +115,12 @@ public class NaiveJavaClient {
 		/* ******************* now for the models **************/
 		
 		if (userInputList.get("runModels").equals("YES") || userInputList.get("runModels").equals("Yes") || userInputList.get("runModels").equals("yes")) {
-			String queryForModels11 = "CubeName:sales\n" + 
-					"Name:CubeQuerySales\n" + 
+			String queryForModels11 =
+					"CubeName:sales\n" + 
+					"Name:Spark_Models_Test_1\n" + 
 					"AggrFunc:Avg\n" + 
 					"Measure:sales\n" + 
-					"Gamma:products_dim.lvl1,locations_dim.lvl1\n" + 
+					"Gamma:products_dim.lvl1,locations_dim.lvl0\n" + 
 					"Sigma:dates_dim.lvl3='2'";
 			String queryName11 = "CubeQuerySales";
 			

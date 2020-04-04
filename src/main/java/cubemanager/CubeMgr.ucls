@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.2.3" icons="true" automaticImage="PNG" always-add-relationships="true" generalizations="true" 
+<class-diagram version="1.2.4" icons="true" automaticImage="PNG" always-add-relationships="true" generalizations="true" 
   realizations="true" associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="cubemanager.CubeManager" project="DelianCubeEngine" 
-    file="/DelianCubeEngine/src/cubemanager/CubeManager.java" binary="false" corner="BOTTOM_RIGHT">    
+    file="/DelianCubeEngine/src/main/java/cubemanager/CubeManager.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="654" y="191"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -11,7 +11,8 @@
     </display>  
   </class>  
   <class id="2" language="java" name="cubemanager.CubeQueryTranslatorFactory" project="DelianCubeEngine" 
-    file="/DelianCubeEngine/src/cubemanager/CubeQueryTranslatorFactory.java" binary="false" corner="BOTTOM_RIGHT">    
+    file="/DelianCubeEngine/src/main/java/cubemanager/CubeQueryTranslatorFactory.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1046" y="463"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -20,7 +21,8 @@
     </display>  
   </class>  
   <class id="3" language="java" name="cubemanager.CubeQueryTranslatorToSQL" project="DelianCubeEngine" 
-    file="/DelianCubeEngine/src/cubemanager/CubeQueryTranslatorToSQL.java" binary="false" corner="BOTTOM_RIGHT">    
+    file="/DelianCubeEngine/src/main/java/cubemanager/CubeQueryTranslatorToSQL.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1359" y="468"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -29,7 +31,7 @@
     </display>  
   </class>  
   <interface id="4" language="java" name="cubemanager.ICubeQueryTranslator" project="DelianCubeEngine" 
-    file="/DelianCubeEngine/src/cubemanager/ICubeQueryTranslator.java" binary="false" corner="BOTTOM_RIGHT">    
+    file="/DelianCubeEngine/src/main/java/cubemanager/ICubeQueryTranslator.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1206" y="346"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -38,7 +40,7 @@
     </display>  
   </interface>  
   <class id="5" language="java" name="cubemanager.cubebase.CubeQuery" project="DelianCubeEngine" 
-    file="/DelianCubeEngine/src/cubemanager/cubebase/CubeQuery.java" binary="false" corner="BOTTOM_RIGHT">    
+    file="/DelianCubeEngine/src/main/java/cubemanager/cubebase/CubeQuery.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1761" y="769"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -46,17 +48,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="cubemanager.starschema.Database" project="DelianCubeEngine" 
-    file="/DelianCubeEngine/src/cubemanager/starschema/Database.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="554" y="895"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
-      <operations public="true" package="false" protected="false" private="false" static="true"/>    
-    </display>  
-  </class>  
-  <class id="7" language="java" name="exctractionmethod.SqlQuery" project="DelianCubeEngine" 
-    file="/DelianCubeEngine/src/exctractionmethod/SqlQuery.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="6" language="java" name="exctractionmethod.SqlQuery" project="DelianCubeEngine" 
+    file="/DelianCubeEngine/src/main/java/exctractionmethod/SqlQuery.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1308" y="1228"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -64,8 +57,8 @@
       <operations public="true" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="exctractionmethod.ExtractionMethod" project="DelianCubeEngine" 
-    file="/DelianCubeEngine/src/exctractionmethod/ExtractionMethod.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="7" language="java" name="exctractionmethod.ExtractionMethod" project="DelianCubeEngine" 
+    file="/DelianCubeEngine/src/main/java/exctractionmethod/ExtractionMethod.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1039" y="793"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -73,8 +66,8 @@
       <operations public="true" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="result.AbstractModel" project="DelianCubeEngine" 
-    file="/DelianCubeEngine/src/result/AbstractModel.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="8" language="java" name="result.AbstractModel" project="DelianCubeEngine" 
+    file="/DelianCubeEngine/src/main/java/result/AbstractModel.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="642" y="1726"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -82,8 +75,8 @@
       <operations public="true" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="result.AbstractModelComponent" project="DelianCubeEngine" 
-    file="/DelianCubeEngine/src/result/AbstractModelComponent.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="9" language="java" name="result.AbstractModelComponent" project="DelianCubeEngine" 
+    file="/DelianCubeEngine/src/main/java/result/AbstractModelComponent.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1075" y="1679"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -91,8 +84,8 @@
       <operations public="true" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="result.Cell" project="DelianCubeEngine" 
-    file="/DelianCubeEngine/src/result/Cell.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="10" language="java" name="result.Cell" project="DelianCubeEngine" 
+    file="/DelianCubeEngine/src/main/java/result/Cell.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="524" y="1319"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -100,8 +93,8 @@
       <operations public="true" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="result.Result" project="DelianCubeEngine" 
-    file="/DelianCubeEngine/src/result/Result.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="11" language="java" name="result.Result" project="DelianCubeEngine" 
+    file="/DelianCubeEngine/src/main/java/result/Result.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="882" y="1331"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -109,60 +102,91 @@
       <operations public="true" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <dependency id="13">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="5"/>  
-  </dependency>  
-  <dependency id="14">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="11"/>  
-  </dependency>  
-  <association id="15">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="16" name="result">        
+  <class id="12" language="java" name="cubemanager.connection.Connection" project="DelianCubeEngine" 
+    file="/DelianCubeEngine/src/main/java/cubemanager/connection/Connection.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="234" y="548"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="true" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="cubemanager.connection.ConnectionFactory" project="DelianCubeEngine" 
+    file="/DelianCubeEngine/src/main/java/cubemanager/connection/ConnectionFactory.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="144" y="213"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="true" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="cubemanager.connection.RDBMSConnection" project="DelianCubeEngine" 
+    file="/DelianCubeEngine/src/main/java/cubemanager/connection/RDBMSConnection.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="572" y="556"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="true" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="cubemanager.connection.SparkConnection" project="DelianCubeEngine" 
+    file="/DelianCubeEngine/src/main/java/cubemanager/connection/SparkConnection.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="81" y="1248"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="true" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="cubemanager.connection.SparkManager" project="DelianCubeEngine" 
+    file="/DelianCubeEngine/src/main/java/cubemanager/connection/SparkManager.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="333" y="978"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="true" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <association id="17">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="18" name="extractionMethod">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="17" minimum="0" maximum="1">        
+      <multiplicity id="19" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
+    <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="18">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="4"/>  
-  </realization>  
-  <association id="19">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="20" name="cells">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="21" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="22">    
-    <bendpoint x="1766" y="257"/>    
+  <dependency id="20">    
     <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="5"/>  
+    <end type="TARGET" refId="7"/>  
   </dependency>  
-  <dependency id="23">    
-    <bendpoint x="1588" y="356"/>    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="5"/>  
-  </dependency>  
-  <dependency id="24">    
+  <generalization id="21">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <dependency id="22">    
     <bendpoint x="1624" y="1526"/>    
     <bendpoint x="980" y="1526"/>    
     <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="12"/>  
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <dependency id="23">    
+    <bendpoint x="444" y="1508"/>    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <dependency id="24">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
   </dependency>  
   <association id="25">    
-    <end type="SOURCE" refId="9" navigable="false">      
+    <end type="SOURCE" refId="8" navigable="false">      
       <attribute id="26" name="components">        
         <position height="0" width="0" x="421" y="42"/>      
       </attribute>      
@@ -170,89 +194,164 @@
         <position height="0" width="0" x="421" y="42"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="28">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="29" name="containingModel">        
-        <position height="0" width="0" x="362" y="137"/>      
-      </attribute>      
-      <multiplicity id="30" minimum="0" maximum="1">        
-        <position height="0" width="0" x="362" y="137"/>      
-      </multiplicity>    
-    </end>    
     <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="31">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <association id="32">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="33" name="cubeQueryTranslator">        
-        <position height="0" width="0" x="-136" y="9"/>      
-      </attribute>      
-      <multiplicity id="34" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-136" y="9"/>      
-      </multiplicity>    
+  <association id="28">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="29" name="sparkManager"/>      
+      <multiplicity id="30" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
+    <end type="TARGET" refId="16" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="35">    
+  <dependency id="31">    
     <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="8"/>  
+    <end type="TARGET" refId="12"/>  
   </dependency>  
-  <dependency id="36">    
+  <dependency id="32">    
     <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="8"/>  
+    <end type="TARGET" refId="7"/>  
   </dependency>  
-  <association id="37">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="38" name="extractionMethod">        
+  <dependency id="33">    
+    <bendpoint x="1588" y="356"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="34">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <association id="35">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="36" name="cells">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="39" minimum="0" maximum="1">        
+      <multiplicity id="37" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="38">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="39">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="40">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <association id="41">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="42" name="containingModel">        
+        <position height="0" width="0" x="362" y="137"/>      
+      </attribute>      
+      <multiplicity id="43" minimum="0" maximum="1">        
+        <position height="0" width="0" x="362" y="137"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="40">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="12"/>  
+  <dependency id="44">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="11"/>  
   </dependency>  
-  <association id="41">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="42" name="result">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="43" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="44">    
+  <dependency id="45">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="46">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <association id="47">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="45" name="cubeQueryTranslatorFactory">        
+      <attribute id="48" name="cubeQueryTranslatorFactory">        
         <position height="0" width="0" x="-141" y="4"/>      
       </attribute>      
-      <multiplicity id="46" minimum="0" maximum="1">        
+      <multiplicity id="49" minimum="0" maximum="1">        
         <position height="0" width="0" x="-141" y="4"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="47">    
+  <generalization id="50">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <realization id="51">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="4"/>  
+  </realization>  
+  <dependency id="52">    
+    <bendpoint x="1766" y="257"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <generalization id="53">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <association id="54">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="55" name="result">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="56" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="57">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <association id="58">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="59" name="result">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="60" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="61">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <association id="62">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="63" name="cubeQueryTranslator">        
+        <position height="0" width="0" x="-136" y="9"/>      
+      </attribute>      
+      <multiplicity id="64" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-136" y="9"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="65">    
+    <bendpoint x="33" y="514"/>    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <dependency id="66">    
     <bendpoint x="776" y="656"/>    
     <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="12"/>  
+    <end type="TARGET" refId="11"/>  
   </dependency>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
