@@ -18,7 +18,7 @@
   * [Example of cube](#Example-of-cube)
   * [Videos](#Videos)
 * [Versioning](#Versioning)
-  * [v.0.3](#v.0.3)
+  * [v.0.3](#v03-2020-july)
 * [Authors](#Authors)
 * [License](#License)
 
