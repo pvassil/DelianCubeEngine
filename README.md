@@ -6,18 +6,20 @@
 
 ## Table of Contents
 
-* [Benchamrk](#Benchamrk)
-  * [Libraries](#Libraries)
-  * [Run](#Run)
+* [Installation](#Installation)
+* [Usage](#Usage)
+* [Measures](#Measures)
+  * [Configurations](#Configurations)
   * [Results](#Results)
-* [Running the tests](#Running-the-tests)
-* [Visualization](#Visualization)
-  * [Example of Visualization](#Example-of-Visualization)
 * [Output Files](#Output-Files)
-* [Build With](#Build-With)
+* [GUI](#GUI)
+* [Extra](#Extra)
+  * [Example of cube file](Example-of-cube-file)
+  * [Videos](#Videos)
 * [Versioning](#Versioning)
+  * [v.0.3](v.0.3)
 * [Authors](#Authors)
-* [Copyright](#Copyright)
+* [License](#License)
 
 ## Installation
 1. Εγκατάσταση της Java και MySQL
@@ -50,6 +52,7 @@
 
 ## Measures
 ### Configurations
+-------
 Για τις μετρήσεις μας
 1. Eκτελέσαμε το [query](https://github.com/pvassil/DelianCubeEngine/blob/nano/InputFiles/10K-products/Sales_Queries.txt) στο cluster της σχολής.
 2. Μετρήθηκαν οι χρόνοι για αριθμό εγγραφών 1.000, 10.000, 100.000, 1.000.000 και 10.000.000
@@ -63,7 +66,7 @@
 Οι μετρήσεις έγιναν με τη χρήση της συνάρτησης `Instant` που προσφέρει η Java.
 
 ### Results
-
+-----
 Οι εικόνες παρουσιάζουν τα αποτελέσματα των μετρήσεων. Στην μπάρα `RDBMS`, αναφερόμαστε στους χρόνους του RDBMS συστήματος. Στις μπάρες `x Node` αναφρόμαστε στο σύστημα Spark, όπου x ο αριθμός των κόμβων-σκλάβων.
 
 #### Αποτελέσματα για 1.000 εγγραφές
@@ -81,29 +84,49 @@
 #### Αποτελέσματα για 10.000.000 εγγραφές
 ![1K Results](https://github.com/pvassil/DelianCubeEngine/blob/nano/OutputFiles/script_times/Average%20time%20of%20query%20execution%20for%2010M%20Lines.png)
 
+## Output Files
+
+Μετά την εκτέλεση του προγράμματος, τα αποτελέσματα εξάγονται στον φάκελο `OutputFiles`. Τα ονόματα των αρχείων περιγράφουν τα δεδομένα που περιέχουν, π.χ. εάν εκτελέσαμε τον αλγόριθμο Kmeans το όνομα του αρχείου θα είναι `[name_of_our_query]_KMeansApache.tab` για τα αποτελέσματα του αλγορίθμου καθώς και ένα αρχείο `[name_of_our_query]_KMeansApache_info.txt` για μια σύντομη περιγραφή για το τί εκτελέστηκε.
+
+Τα αποτελέσματα μπορούν επίσης να προβληθούν και μέσα στο γραφικό περιβάλλον του DelianCube Engine. Παράδειγμα εμφάνισης αποτελεσμάτων βλέπουμε στην Εικόνα 1.
+
+<p align="center">
+<img src="https://github.com/pvassil/DelianCubeEngine/blob/nano/GUI-images/GUI%20-%20Results.png" width="500">
+<br>Εικόνα 1
+</p>
+
+## GUI
+
+Η Εικόνα 2 δείχνει το γραφικό περιβάλλον του παραθύρου σύνδεσης.
+<br>
+<p align="center">
+<img src="https://github.com/pvassil/DelianCubeEngine/blob/nano/GUI-images/Delian%20Cubes%20Client%20Application%20-%20JDBC%20-%20Login.png" width="500">
+<br>Εικόνα 2
+</p>
+
+<br><br>
+Η Εικόνα 3 δείχνει το γραφικό περιβάλλον της κεντρικής εφαρμογής, μετά τη σύνδεση.
+<br>
+<p align="center">
+<img src="https://github.com/pvassil/DelianCubeEngine/blob/nano/GUI-images/Delian%20Cubes%20Client%20Application%20-%20JDBC%20-%20Main%20App.png" width="500">
+<br>Εικόνα 3
+</p>
+
+
+## Extra
+
+### Example of cube file
+
+### Videos
+
+## Versioning
+
+### v.0.3 [2020 July]
+Ενσωματώθηκε η λειτουργικότητα του Apache Spark από τον Καδόγλου Κωνσταντίνο.
+
+## Authors
+
+:pencil2:  <b>Konstantinos Kadoglou</b>
+
 ## License
 See the [copyright](copyright.md) file.
-
-
-## ToDo
-Community 
-- [ ] ToDo: Must complement this file with a section on how to contribute. Sorry!
-
-Refactorings & Corrections
-- [ ] Address the todo's inside the src
-- [ ] Introduce an intermediate abstraction level between cubebase and (relational) database, s.t., new DBMS types are pluggable
-- [ ] Refactor the GUI client, to kill cycles in the package diagram
-- [ ] Refactor the result package to add a hierarchy of packages for modules (abstract, general-purpose, KPIs, clusterings, ...)
-- [ ] Refactor how clients communicate with server and server init. Connections should be parsed at server startup and sessions handled by an intermediate class between Server and SQP (probably a sessionManager or a QueryManager, caching sessions, queries and their results, etc) 
-- [X] Redefine how client communicates with server: a list of files is produced, not just a single tab file with the data
-- [X] Add a "Run Single Query" part at the GUI client that opens sth like a text editor to write a single query and calls the QueryFromString at the server
-- [X] Add a GUI client
-- [X] Cleanup the code from unused parts of v.0.0 (at least the known ones)
-- [X] Fix the fixme comments
-
-Extension to an Intentional OLAP engine
-- [ ] Add support to more apache commons math parts that pertain to the computation of simple models
-- [ ] (maybe) Link to weka / spark mllib / ... via principled interfacing to add more model extraction methods
-
-
-
