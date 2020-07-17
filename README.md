@@ -11,13 +11,14 @@
 * [Measures](#Measures)
   * [Configurations](#Configurations)
   * [Results](#Results)
+  * [Conclusions](#Conclusions)
 * [Output Files](#Output-Files)
 * [GUI](#GUI)
 * [Extra](#Extra)
-  * [Example of cube file](Example-of-cube-file)
+  * [Example of cube](#Example-of-cube)
   * [Videos](#Videos)
 * [Versioning](#Versioning)
-  * [v.0.3](v.0.3)
+  * [v.0.3](#v.0.3)
 * [Authors](#Authors)
 * [License](#License)
 
@@ -55,9 +56,10 @@
 -------
 Για τις μετρήσεις μας
 1. Eκτελέσαμε το [query](https://github.com/pvassil/DelianCubeEngine/blob/nano/InputFiles/10K-products/Sales_Queries.txt) στο cluster της σχολής.
-2. Μετρήθηκαν οι χρόνοι για αριθμό εγγραφών 1.000, 10.000, 100.000, 1.000.000 και 10.000.000
-3α. Για το σύστημα RDBMS χρησιμοποιήθηκε η MySQL, η οποία έτρεχε σε έναν υπολογιστή του cluster.
-3β. Για το σύστημα Spark έγιναν μετρήσεις, με τη χρήση από 1 εώς 10 κόμβους-σκλάβους.
+2. Μετρήθηκαν οι χρόνοι για αριθμό εγγραφών 1.000, 10.000, 100.000, 1.000.000 και 10.000.000.
+3. Hardware :
+ * Για το σύστημα RDBMS χρησιμοποιήθηκε η MySQL, η οποία έτρεχε σε έναν υπολογιστή του cluster.<br>
+ * Για το σύστημα Spark έγιναν μετρήσεις, με τη χρήση από 1 εώς 10 κόμβους-σκλάβους.<br>
 4. Τα χαρακτηριστικά του cluster είναι :
 * Κάθε κόμβος του cluster αποτελείται από ένα Sun  Fire X4100 Server με 4 CPUs (Dual Core AMD Opteron στα 2193 MHz κάθε CPU).
 * Κάθε κόμβος έχει 12GB Ram. Για την εκτέλεσή μας, χρησιμοποιήθηκαν 3GB RAM σε κάθε κόμβο.
@@ -69,20 +71,31 @@
 -----
 Οι εικόνες παρουσιάζουν τα αποτελέσματα των μετρήσεων. Στην μπάρα `RDBMS`, αναφερόμαστε στους χρόνους του RDBMS συστήματος. Στις μπάρες `x Node` αναφρόμαστε στο σύστημα Spark, όπου x ο αριθμός των κόμβων-σκλάβων.
 
-#### Αποτελέσματα για 1.000 εγγραφές
-![1K Results](https://github.com/pvassil/DelianCubeEngine/blob/nano/OutputFiles/script_times/Average%20time%20of%20query%20execution%20for%201K%20Lines.png)
+<p align="center">
+<img src="https://github.com/pvassil/DelianCubeEngine/blob/nano/OutputFiles/script_times/Average%20time%20of%20query%20execution%20for%201K%20Lines.png" width="700">
+</p>
+<br>
 
-#### Αποτελέσματα για 10.000 εγγραφές
-![1K Results](https://github.com/pvassil/DelianCubeEngine/blob/nano/OutputFiles/script_times/Average%20time%20of%20query%20execution%20for%2010K%20Lines.png)
+<p align="center">
+<img src="https://github.com/pvassil/DelianCubeEngine/blob/nano/OutputFiles/script_times/Average%20time%20of%20query%20execution%20for%2010K%20Lines.png" width="700">
+</p>
+<br>
+<p align="center">
+<img src="https://github.com/pvassil/DelianCubeEngine/blob/nano/OutputFiles/script_times/Average%20time%20of%20query%20execution%20for%20100K%20Lines.png" width="700">
+</p>
+<br>
+<p align="center">
+<img src="https://github.com/pvassil/DelianCubeEngine/blob/nano/OutputFiles/script_times/Average%20time%20of%20query%20execution%20for%201M%20Lines.png" width="700">
+</p>
+<br>
+<p align="center">
+<img src="https://github.com/pvassil/DelianCubeEngine/blob/nano/OutputFiles/script_times/Average%20time%20of%20query%20execution%20for%2010M%20Lines.png" width="700">
+</p>
+<br>
 
-#### Αποτελέσματα για 100.000 εγγραφές
-![1K Results](https://github.com/pvassil/DelianCubeEngine/blob/nano/OutputFiles/script_times/Average%20time%20of%20query%20execution%20for%20100K%20Lines.png)
+### Conclusions
 
-#### Αποτελέσματα για 1.000.000 εγγραφές
-![1K Results](https://github.com/pvassil/DelianCubeEngine/blob/nano/OutputFiles/script_times/Average%20time%20of%20query%20execution%20for%201M%20Lines.png)
-
-#### Αποτελέσματα για 10.000.000 εγγραφές
-![1K Results](https://github.com/pvassil/DelianCubeEngine/blob/nano/OutputFiles/script_times/Average%20time%20of%20query%20execution%20for%2010M%20Lines.png)
+Όπως παρατηρούμε από τις γραφικές παραστάσεις, το σύστημα Spark είναι πιο χρονοβόρο όταν τα δεδομένα είναι λίγα. Οπότε, στην περίπτωση που τα δεδομένα είναι λίγα συνίσταται η χρήση του συστήματος RDBMS. Στην περίπτωση όπου έχουμε να κάνουμε με μεγάλα δεδομένα η χρήση του Spark είναι κατά μέσο όρο x10 πιο γρήγορη από αυτή ενός συστήματος RDBMS.
 
 ## Output Files
 
@@ -115,14 +128,45 @@
 
 ## Extra
 
-### Example of cube file
+### Example of cube
+
+Στο αρχείο `[cube_name].ini` ορίζουμε τον κάθε dimension table ως εξής :
+
+    CREATE DIMENSION [dimension_table_name]_dim
+    RELATED SQL_TABLE [dimension_table_name]
+    LIST OF LEVEL {
+     [dimension_table_name].[id_variable_name] AS lvl0,
+     [dimension_table_name].[variable_name_of_1st_level] AS lvl1,
+     [dimension_table_name].[variable_name_of_2nd_level] AS lvl2,
+     ...
+     ...
+     [dimension_table_name].[variable_name_of_last_level] AS lvl[N]
+    }
+    HIERARCHY lvl0>lvl1>lvl2>...>...>lvl[N];
+
+και στο τέλος τον fact table ως εξής :
+
+    CREATE CUBE [cube_table_name]_cube
+    RELATED SQL_TABLE [cube_table_name]
+    MEASURES [measure_name] AS [cube_table_name].[variable_name_to_measure]
+    REFERENCES DIMENSION 
+     [1st_dimension_table_name]_dim AT [cube_table_name].[foreign_key_to_dimension_table],
+     [2nd_dimension_table_name]_dim AT [cube_table_name].[foreign_key_to_dimension_table],
+     ...
+     ...
+     [Nth_dimension_table_name]_dim AT 	[cube_table_name].[foreign_key_to_dimension_table]
+     
+*Στη θέση του **RELATED SQL_TABLE** το όρισμα παραμένει ίδιο για RDBMS και Spark.
+
+Για συμπληρωμένο παράδειγμα μπορείτε να δείτε [εδώ](https://github.com/pvassil/DelianCubeEngine/blob/nano/InputFiles/10K-products/sales.ini).
+
 
 ### Videos
 
 ## Versioning
 
 ### v.0.3 [2020 July]
-Ενσωματώθηκε η λειτουργικότητα του Apache Spark από τον Καδόγλου Κωνσταντίνο.
+Ενσωματώθηκε η λειτουργικότητα του Apache Spark, έγινε ένα 'μικρό' μέρος refactoring και μετατράπηκε το Java Project σε Maven Project, από τον Καδόγλου Κωνσταντίνο.
 
 ## Authors
 
