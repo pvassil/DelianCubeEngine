@@ -72,24 +72,24 @@
 Οι εικόνες παρουσιάζουν τα αποτελέσματα των μετρήσεων. Στην μπάρα `RDBMS`, αναφερόμαστε στους χρόνους του RDBMS συστήματος. Στις μπάρες `x Node` αναφρόμαστε στο σύστημα Spark, όπου x ο αριθμός των κόμβων-σκλάβων.
 
 <p align="center">
-<img src="https://github.com/pvassil/DelianCubeEngine/blob/nano/OutputFiles/script_times/Average%20time%20of%20query%20execution%20for%201K%20Lines.png" width="700">
+<img src="https://github.com/pvassil/DelianCubeEngine/blob/nano/GUI-images/1f%20%CE%B1%CE%BD%CF%84%CE%AF%CE%B3%CF%81%CE%B1%CF%86%CE%BF.png" width="700">
 </p>
 <br>
 
 <p align="center">
-<img src="https://github.com/pvassil/DelianCubeEngine/blob/nano/OutputFiles/script_times/Average%20time%20of%20query%20execution%20for%2010K%20Lines.png" width="700">
+<img src="https://github.com/pvassil/DelianCubeEngine/blob/nano/GUI-images/2f%20%CE%B1%CE%BD%CF%84%CE%AF%CE%B3%CF%81%CE%B1%CF%86%CE%BF.png" width="700">
 </p>
 <br>
 <p align="center">
-<img src="https://github.com/pvassil/DelianCubeEngine/blob/nano/OutputFiles/script_times/Average%20time%20of%20query%20execution%20for%20100K%20Lines.png" width="700">
+<img src="https://github.com/pvassil/DelianCubeEngine/blob/nano/GUI-images/3f%20%CE%B1%CE%BD%CF%84%CE%AF%CE%B3%CF%81%CE%B1%CF%86%CE%BF.png" width="700">
 </p>
 <br>
 <p align="center">
-<img src="https://github.com/pvassil/DelianCubeEngine/blob/nano/OutputFiles/script_times/Average%20time%20of%20query%20execution%20for%201M%20Lines.png" width="700">
+<img src="https://github.com/pvassil/DelianCubeEngine/blob/nano/GUI-images/4f%20%CE%B1%CE%BD%CF%84%CE%AF%CE%B3%CF%81%CE%B1%CF%86%CE%BF.png" width="700">
 </p>
 <br>
 <p align="center">
-<img src="https://github.com/pvassil/DelianCubeEngine/blob/nano/OutputFiles/script_times/Average%20time%20of%20query%20execution%20for%2010M%20Lines.png" width="700">
+<img src="https://github.com/pvassil/DelianCubeEngine/blob/nano/GUI-images/5f%20%CE%B1%CE%BD%CF%84%CE%AF%CE%B3%CF%81%CE%B1%CF%86%CE%BF.png" width="700">
 </p>
 <br>
 
