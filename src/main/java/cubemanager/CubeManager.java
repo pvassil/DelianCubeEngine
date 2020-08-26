@@ -69,7 +69,7 @@ public class CubeManager {
 			throws RemoteException {
 		File file = new File(PathFolder.getPathOfProject() + File.separator + "InputFiles" + File.separator + inputlookup + File.separator + cubeName + ".ini");
 		if (!file.exists()) {
-			throw new java.lang.RuntimeException("Error : Wrong values. Check InputFolder and cubeName.");
+			throw new java.lang.RuntimeException("Error : Wrong values. Missing file at " + PathFolder.getPathOfProject() + ". Check InputFolder and cubeName.");
 		}
 		try {
 			this.parseFile(file);

@@ -37,7 +37,7 @@ public class RDBMSAnswerQueryFromFileSuccess {
 		userInputList.put("cubeName", "sales");
 		userInputList.put("inputFolder", "10K-products");
 		userInputList.put("username", "root");
-		userInputList.put("password", "password");
+		userInputList.put("password", "root");
 		
 		testEngine.initializeConnection(typeOfConnection, userInputList);
 	}
