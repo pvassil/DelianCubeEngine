@@ -217,10 +217,11 @@ public class SparkManager {
 			String[] values = new String[queryList.get(i).size()];
 			for (int j = 0; j < columnCount; j++) {
 				String value;
-				if(StringUtils.isNumeric(queryList.get(i).get(j).toString().replace(".", ""))) {
+				if(StringUtils.isNumeric(queryList.get(i).get(j).toString().replace(",", "")) || StringUtils.isNumeric(queryList.get(i).get(j).toString().replace(".", ""))) {
 					if (!StringUtils.isNumeric(queryList.get(i).get(j).toString())) {
 						DecimalFormat decim = new DecimalFormat("0.0000");
 						value = decim.format(Float.parseFloat(queryList.get(i).get(j).toString()))+"";
+						value = value.replace(",", ".");
 					} else {
 						value = queryList.get(i).get(j).toString();
 					}

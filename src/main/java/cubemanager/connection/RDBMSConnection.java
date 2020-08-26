@@ -178,11 +178,12 @@ public class RDBMSConnection extends Connection {
 					String [] values = new String[resultSet.getMetaData().getColumnCount()];
 					for(int i=0;i<columnCount;i++){
 						String value;
-						if(StringUtils.isNumeric(resultSet.getString(i+1).replace(".", ""))) {
+						if(StringUtils.isNumeric(resultSet.getString(i+1).replace(",", ""))) {
 							if (!StringUtils.isNumeric(resultSet.getString(i+1))) {
 
 								DecimalFormat decim = new DecimalFormat("0.0000");
 								value = decim.format(Float.parseFloat(resultSet.getString(i+1)))+"";
+								value = value.replace(",", ".");
 							} else {
 								value = resultSet.getString(i+1);
 							}
