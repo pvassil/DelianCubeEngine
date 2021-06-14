@@ -845,5 +845,15 @@ System.out.println("@SRV: INFO FILE\t" + resMetadata.getResultInfoFile());
 		return results;
 
 	}//end answerCubeQueryWithInterestMeasures
+
+
+	public Session getSession() {
+		return session;
+	}
+
+
+	public QueryHistoryManager getQueryHistoryMng() {
+		return queryHistoryMng;
+	}
 	
 }//end class

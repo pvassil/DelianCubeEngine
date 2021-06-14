@@ -30,10 +30,6 @@ public class QueryHistoryManager {
 		return null;
 	}
 	
-	public List<CubeQuery> getHistoryOfQueries(){
-		return queryHistory;
-	}
-	
 	public CubeQuery getLastQuery() {
 		if(queryHistory.isEmpty()) {
 			return null;
