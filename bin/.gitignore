@@ -3,6 +3,11 @@
 /cubemanager/
 /exctractionmethod/
 /mainengine/
+<<<<<<< HEAD
+=======
+/parsermgr/
+/result/
+>>>>>>> branch 'session' of https://github.com/pvassil/DelianCubeEngine
 /setup/
 /interestingnessengine/
 /parsermgr/

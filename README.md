@@ -26,6 +26,7 @@ For v.0.1 - v.0.3, the usage is simple:
 ## Credits and History
 
 ### v.0.3 [2021 January]
+* S. Zogos added sessions and query history management
 * D. Gkitsakis added the first v. of the natural language querying package (also: tests & clients) to allow the querying via natural language
 * E. Mouselli added the first v. of the interestingness package (also: tests & clients) to assess query interestingness
 
