@@ -27,7 +27,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cubemanager.CubeManager;
+import cubemanager.cubebase.CubeQuery;
+import cubemanager.cubebase.QueryHistoryManager;
 import mainengine.nlq.NLQValidationResults;
+import result.Result;
 
 /**
  * @author pvassil
@@ -193,16 +196,23 @@ public interface IMainEngine extends IServer {
 	 */
     String[] answerCubeQueryWithInterestMeasures(String queryString, List<String> measures) throws RemoteException;
 	
+    //OLAP Roll up
+    Result rollUp(CubeQuery cubeQuery, String dimension, String level) throws RemoteException;
+
+    Result drillDown(CubeQuery cubeQuery, String dimension, String level) throws RemoteException;
+    
+    QueryHistoryManager getQueryHistoryMng() throws RemoteException;
 	/**
 	 * @deprecated	Not to be used in the context of the DelianCubeEngine project.
 	 * This is an old-to-be-removed method, from Cinecubes, that turns on/off audio and MS word generation
 	 * 
 	 * @param audio	To turn on/off audio generation
 	 * @param word	To turn on/off MS Word generation
+	 * @return 
 	 * @throws RemoteException
 	 */
 //	void optionsChoice(boolean audio, boolean word)throws RemoteException;
 	
-	
+    	
 
 }

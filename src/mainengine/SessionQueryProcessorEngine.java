@@ -335,7 +335,7 @@ public class SessionQueryProcessorEngine extends UnicastRemoteObject implements 
 		//1. parse query and produce a CubeQuery
 		CubeQuery currentCubQuery = cubeManager.createCubeQueryFromString(queryRawString, queryParams); 
 		this.currentCubeQuery = currentCubQuery;
-		
+				
 		//2. execute the query AND populate Result with a 2D string
 		//Result res = cubeManager.getCubeBase().executeQuery(currentCubQuery);
 		Result res = cubeManager.executeQuery(currentCubQuery);
@@ -846,14 +846,58 @@ System.out.println("@SRV: INFO FILE\t" + resMetadata.getResultInfoFile());
 
 	}//end answerCubeQueryWithInterestMeasures
 
-
-	public Session getSession() {
-		return session;
+	@Override
+	public QueryHistoryManager getQueryHistoryMng() {
+		return queryHistoryMng;
 	}
 
 
-	public QueryHistoryManager getQueryHistoryMng() {
-		return queryHistoryMng;
+	@Override
+	public Result rollUp(CubeQuery cubeQuery, String dimension, String level) throws RemoteException {
+		// TODO Auto-generated method stub
+		boolean b = false;
+		for( String[] gammaExpression : cubeQuery.getGammaExpressions() ) {
+			if( gammaExpression[0].equals(dimension) ) {
+				if(Integer.parseInt( gammaExpression[1].replace("lvl","") ) > Integer.parseInt( level.replace("lvl","") )) {
+					gammaExpression[1] = "lvl" + (Integer.parseInt( gammaExpression[1].replace("lvl","") ) + 1);
+				} else {
+					gammaExpression[1] = level;
+				}
+				b = true;
+			}
+		}
+		if(!b) {
+			ArrayList<String[]> list = new ArrayList<>();
+			String[] gamma = { dimension, level };
+			list.add(gamma);
+			cubeQuery.setGammaExpressions(list);
+		}		
+		Result res = cubeManager.executeQuery(cubeQuery);
+		return res;
+	}
+	
+	@Override
+	public Result drillDown(CubeQuery cubeQuery, String dimension, String level) throws RemoteException {
+		// TODO Auto-generated method stub
+		boolean b = false;
+		for( String[] gammaExpression : cubeQuery.getGammaExpressions() ) {
+			if( gammaExpression[0].equals(dimension) ) {
+				if(Integer.parseInt( gammaExpression[1].replace("lvl","") ) < Integer.parseInt( level.replace("lvl","") )) {
+					gammaExpression[1] = "lvl" + (Integer.parseInt( gammaExpression[1].replace("lvl","") ) - 1);
+				} else {
+					gammaExpression[1] = level;
+				}
+				b = true;
+			}
+		}
+		if(!b) {
+			ArrayList<String[]> list = new ArrayList<>();
+			String[] gamma = { dimension, level };
+			list.add(gamma);
+			cubeQuery.setGammaExpressions(list);
+		}		
+		Result res = cubeManager.executeQuery(cubeQuery);
+		return res;
 	}
 	
 }//end class
