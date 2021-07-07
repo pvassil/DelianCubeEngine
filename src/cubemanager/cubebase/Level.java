@@ -20,9 +20,12 @@
 
 package cubemanager.cubebase;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Level {
+public class Level implements Serializable{
+	private static final long serialVersionUID = 4390482518182625971L;
+
     /**
 	 * @uml.property  name="hierarchy"
 	 * @uml.associationEnd  inverse="lvls:CubeMgr.CubeBase.Hierarchy"

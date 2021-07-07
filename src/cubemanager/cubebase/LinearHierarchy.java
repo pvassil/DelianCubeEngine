@@ -20,9 +20,12 @@
 
 package cubemanager.cubebase;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class LinearHierarchy  extends Hierarchy {
+public class LinearHierarchy  extends Hierarchy implements Serializable{
+	private static final long serialVersionUID = 4390482518182625971L;
+
 	
     public LinearHierarchy(){
     	lvls=new ArrayList<Level>();

@@ -20,11 +20,14 @@
 
 package cubemanager.cubebase;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import cubemanager.starschema.DimensionTable;
 
-public class Dimension{
+public class Dimension implements Serializable{
+	private static final long serialVersionUID = 4390482518182625971L;
+
     /**
 	 * @uml.property  name="hierachy"
 	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="CubeMgr.CubeBase.Level"

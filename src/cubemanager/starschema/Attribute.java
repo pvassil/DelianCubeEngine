@@ -20,7 +20,11 @@
 
 package cubemanager.starschema;
 
-public class Attribute {
+import java.io.Serializable;
+
+public class Attribute implements Serializable{
+	private static final long serialVersionUID = 4390482518182625971L;
+
 	/**
 	 * @uml.property  name="name"
 	 */

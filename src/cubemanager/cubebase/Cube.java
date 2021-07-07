@@ -20,10 +20,13 @@
 
 package cubemanager.cubebase;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cube {
+public class Cube implements Serializable{
+	private static final long serialVersionUID = 4390482518182625971L;
+
 
 	protected String name;
 	protected List<Level> lvl;

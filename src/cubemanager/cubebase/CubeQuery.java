@@ -20,6 +20,7 @@
 
 package cubemanager.cubebase;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 //import java.util.List;
@@ -27,7 +28,9 @@ import java.util.HashSet;
 import exctractionmethod.ExtractionMethod;
 import result.Result;
 
-public class CubeQuery extends Cube {
+public class CubeQuery extends Cube implements Serializable{
+	private static final long serialVersionUID = 4390482518182625971L;
+
 
 	private ArrayList<String[]> GammaExpressions; // 0->dimension_name, 1->level
 	// of dimension

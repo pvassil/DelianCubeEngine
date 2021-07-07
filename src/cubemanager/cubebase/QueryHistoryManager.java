@@ -1,9 +1,12 @@
 package cubemanager.cubebase;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QueryHistoryManager {
+public class QueryHistoryManager implements Serializable{
+	private static final long serialVersionUID = 4390482518182625971L;
+
 
 	private String sessionId;
 	private List<CubeQuery> queryHistory;

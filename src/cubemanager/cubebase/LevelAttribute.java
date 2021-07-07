@@ -20,9 +20,13 @@
 
 package cubemanager.cubebase;
 
+import java.io.Serializable;
+
 import cubemanager.starschema.Attribute;
 
-public class LevelAttribute{
+public class LevelAttribute implements Serializable{
+	private static final long serialVersionUID = 4390482518182625971L;
+
     
 	/**
 	 * @uml.property  name="nameLvlAttr"

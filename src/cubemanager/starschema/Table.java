@@ -20,6 +20,7 @@
 
 package cubemanager.starschema;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
@@ -27,7 +28,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Table {
+public class Table implements Serializable{
+	private static final long serialVersionUID = 4390482518182625971L;
+
    
     private List<Attribute> LstAttr;
     private String tableName;

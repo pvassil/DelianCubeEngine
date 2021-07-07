@@ -25,10 +25,14 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ArrayList;
 
+import java.io.Serializable;
+
 import client.ClientRMITransferer;
+import cubemanager.cubebase.QueryHistoryManager;
 //import mainengine.Foo;
 import mainengine.IMainEngine;
 import mainengine.ResultFileMetadata;
+import mainengine.Session;
 /**
  * A simple client that 
  * (a) locates an RMI server in the HOST at PORT
@@ -37,7 +41,8 @@ import mainengine.ResultFileMetadata;
  * @author pvassil
  *
  */
-public class NaiveJavaClient {
+public class NaiveJavaClient implements Serializable{
+	private static final long serialVersionUID = 4390482518182625971L;
 
 	// Host or IP of Server
 	private static final String HOST = "localhost";
@@ -58,7 +63,6 @@ public class NaiveJavaClient {
 		//service.optionsChoice(false, false);
 		
 		
-		
 		// Cube ADULT and queries
 		/*service.initializeConnection("adult_no_dublic", "CinecubesUser",
 				"Cinecubes", "adult", "adult");
@@ -70,6 +74,8 @@ public class NaiveJavaClient {
 				"Cinecubes", "pkdd99", "loan");
 		System.out.println("Completed connection initialization");
 
+
+		
 		//CleanUp client Cache
 		File resultFolder = new File("ClientCache");
 		deleteAllFilesOfFolder(resultFolder);
@@ -86,6 +92,7 @@ public class NaiveJavaClient {
 		File f4 = new File("InputFiles/cubeQueriesorder.ini");
 		service.answerCubeQueriesFromFile(f4);/**/
 		
+
 		
 		for(String s: fileLocations) {
 			System.out.println("Find the next result at " + s);
@@ -127,7 +134,8 @@ public class NaiveJavaClient {
 		//String [] modelsToGenerate = {};
 		ResultFileMetadata resMetadata = service.answerCubeQueryFromStringWithModels(queryFired, modelsToGenerate);
 		
-
+		QueryHistoryManager queryHistory = service.getQueryHistoryMng();
+		service.rollUp(queryHistory.getQueryByName("LoanQuery11_S1_CG-Prtl"), "account_dim", "lvl0");
 		
 		String remoteFolder = resMetadata.getLocalFolder();
 		String remoteResultsFile = resMetadata.getResultFile();

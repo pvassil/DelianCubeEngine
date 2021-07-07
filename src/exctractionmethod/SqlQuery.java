@@ -24,11 +24,14 @@ import java.util.ArrayList;
 
 import result.Result;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 //import java.sql.SQLException;
 
 
-public class SqlQuery extends ExtractionMethod {
+public class SqlQuery extends ExtractionMethod implements Serializable{
+	private static final long serialVersionUID = 4390482518182625971L;
+
 
 	private String[] SelectClauseMeasure;  	/* 0-->AggregateFuncName, 1--> field */  
 	private ArrayList<String[]> FromClause; 	/* 0-->TABLE, 1-->customName */

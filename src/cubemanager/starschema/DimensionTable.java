@@ -20,7 +20,11 @@
 
 package cubemanager.starschema;
 
-public class DimensionTable extends Table {
+import java.io.Serializable;
+
+public class DimensionTable extends Table implements Serializable{
+	private static final long serialVersionUID = 4390482518182625971L;
+
     
 	
 	public DimensionTable(String name) {

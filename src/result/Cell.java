@@ -18,6 +18,7 @@
 */
 package result;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -26,7 +27,8 @@ import java.util.Arrays;
  * @author pvassil
  *
  */
-public class Cell {
+public class Cell implements Serializable{
+	private static final long serialVersionUID = 4390482518182625971L;
 
 	private ArrayList<String> dimensionMembers;
 	private String measure;

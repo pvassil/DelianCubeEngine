@@ -21,6 +21,7 @@
 package result;
 
 import java.io.PrintStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -40,7 +41,9 @@ import java.util.ArrayList;
  * 
  * @see Cell
  */
-public class Result {
+public class Result implements Serializable{
+	private static final long serialVersionUID = 4390482518182625971L;
+	
     
 	/**
 	 * @uml.property  name="resultArray"

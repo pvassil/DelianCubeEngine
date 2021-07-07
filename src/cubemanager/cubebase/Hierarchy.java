@@ -20,10 +20,13 @@
 
 package cubemanager.cubebase;
 
+import java.io.Serializable;
 import java.util.List;
 
 
-public abstract class Hierarchy {
+public abstract class Hierarchy implements Serializable{
+	private static final long serialVersionUID = 4390482518182625971L;
+
 	
 	protected List<Level> lvls;    
 	protected Dimension dimension;
